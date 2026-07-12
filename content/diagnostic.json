@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "ladders": [
+    {
+      "id": "counting",
+      "title": "Counting games",
+      "emoji": "🔢",
+      "items": [
+        { "id": "cnt1", "level": 1, "conceptId": "pv-1000-consolidate", "text": "What number comes after 29?", "say": "What number comes right after twenty nine?", "answer": 30 },
+        { "id": "cnt2", "level": 2, "conceptId": "pv-1000-consolidate", "text": "What number comes before 70?", "say": "What number comes just before seventy?", "answer": 69 },
+        { "id": "cnt3", "level": 3, "conceptId": "pv-1000-consolidate", "text": "Counting by tens: 40, 50, 60 … what comes next?", "say": "Let’s count by tens. Forty, fifty, sixty. What comes next?", "answer": 70 },
+        { "id": "cnt4", "level": 4, "conceptId": "pv-1000-consolidate", "text": "What number comes after 109?", "say": "What number comes right after one hundred and nine?", "answer": 110 },
+        { "id": "cnt5", "level": 5, "conceptId": "pv-1000-consolidate", "text": "Counting by fives: 35, 40, 45 … what comes next?", "say": "Counting by fives. Thirty five, forty, forty five. What comes next?", "answer": 50 },
+        { "id": "cnt6", "level": 6, "conceptId": "pv-1000-consolidate", "text": "What number comes before 200?", "say": "What number comes just before two hundred?", "answer": 199 }
+      ]
+    },
+    {
+      "id": "placevalue",
+      "title": "Number detective",
+      "emoji": "🔍",
+      "items": [
+        { "id": "pv1", "level": 1, "conceptId": "pv-1000-consolidate", "text": "What number is 2 tens and 3 ones?", "say": "What number is two tens, and three ones?", "answer": 23 },
+        { "id": "pv2", "level": 2, "conceptId": "pv-1000-consolidate", "text": "How many tens are in 58?", "say": "How many tens are in fifty eight?", "answer": 5 },
+        { "id": "pv3", "level": 3, "conceptId": "pv-1000-consolidate", "text": "In the number 372, what is the 7 worth?", "say": "In the number three hundred and seventy two, what is the seven worth?", "answer": 70 },
+        { "id": "pv4", "level": 4, "conceptId": "pv-1000-consolidate", "text": "What number is 4 hundreds, 0 tens and 7 ones?", "say": "What number is four hundreds, zero tens, and seven ones?", "answer": 407 },
+        { "id": "pv5", "level": 5, "conceptId": "pv-partitioning", "text": "What is 100 more than 458?", "say": "What is one hundred more than four hundred and fifty eight?", "answer": 558 },
+        { "id": "pv6", "level": 6, "conceptId": "pv-10000s", "text": "In the number 2,613, what is the 6 worth?", "say": "In the number two thousand, six hundred and thirteen, what is the six worth?", "answer": 600 }
+      ]
+    },
+    {
+      "id": "bonds",
+      "title": "Number friends",
+      "emoji": "🤝",
+      "items": [
+        { "id": "bd1", "level": 1, "conceptId": "bonds-addsub", "text": "What is 7 + 3?", "say": "What is seven plus three?", "answer": 10 },
+        { "id": "bd2", "level": 2, "conceptId": "bonds-addsub", "text": "What is 10 − 4?", "say": "What is ten take away four?", "answer": 6 },
+        { "id": "bd3", "level": 3, "conceptId": "bonds-addsub", "text": "6 + something makes 10. What is it?", "say": "Six plus something makes ten. What is the something?", "answer": 4 },
+        { "id": "bd4", "level": 4, "conceptId": "bonds-addsub", "text": "13 is 10 and how many more?", "say": "Thirteen is ten, and how many more?", "answer": 3 },
+        { "id": "bd5", "level": 5, "conceptId": "bonds-addsub", "text": "8 + something makes 15. What is it?", "say": "Eight plus something makes fifteen. What is the something?", "answer": 7 },
+        { "id": "bd6", "level": 6, "conceptId": "bonds-addsub", "text": "What is 20 − 13?", "say": "What is twenty take away thirteen?", "answer": 7 }
+      ]
+    },
+    {
+      "id": "addsub",
+      "title": "Adding & taking away",
+      "emoji": "➕",
+      "items": [
+        { "id": "as1", "level": 1, "conceptId": "addsub-strategies", "text": "What is 8 + 7?", "say": "What is eight plus seven?", "answer": 15 },
+        { "id": "as2", "level": 2, "conceptId": "addsub-strategies", "text": "What is 12 − 5?", "say": "What is twelve take away five?", "answer": 7 },
+        { "id": "as3", "level": 3, "conceptId": "addsub-strategies", "text": "What is 25 + 10?", "say": "What is twenty five plus ten?", "answer": 35 },
+        { "id": "as4", "level": 4, "conceptId": "addsub-strategies", "text": "What is 30 − 9?", "say": "What is thirty take away nine?", "answer": 21 },
+        { "id": "as5", "level": 5, "conceptId": "add-23digit", "text": "What is 24 + 13?", "say": "What is twenty four plus thirteen?", "answer": 37 },
+        { "id": "as6", "level": 6, "conceptId": "sub-23digit", "text": "What is 42 − 27?", "say": "What is forty two take away twenty seven?", "answer": 15 },
+        { "id": "as7", "level": 7, "conceptId": "sub-23digit", "text": "What is 407 − 10?", "say": "What is four hundred and seven, take away ten?", "answer": 397 }
+      ]
+    },
+    {
+      "id": "fractions",
+      "title": "Sharing fairly",
+      "emoji": "🍕",
+      "items": [
+        { "id": "fr1", "level": 1, "conceptId": "div-fractions-intro", "text": "What is half of 8?", "say": "What is half of eight?", "answer": 4 },
+        { "id": "fr2", "level": 2, "conceptId": "div-fractions-intro", "text": "What is half of 14?", "say": "What is half of fourteen?", "answer": 7 },
+        { "id": "fr3", "level": 3, "conceptId": "div-fractions-intro", "text": "A cake is cut into quarters. How many pieces are there?", "say": "A cake is cut into quarters. How many pieces are there?", "answer": 4 },
+        { "id": "fr4", "level": 4, "conceptId": "div-fractions-intro", "text": "What is a quarter of 12?", "say": "What is a quarter of twelve?", "answer": 3 },
+        { "id": "fr5", "level": 5, "conceptId": "fractions-numberline", "text": "What is half of 30?", "say": "What is half of thirty?", "answer": 15 }
+      ]
+    },
+    {
+      "id": "mult",
+      "title": "Groups & arrays",
+      "emoji": "🍪",
+      "items": [
+        { "id": "ml1", "level": 1, "conceptId": "mult-intro", "text": "What is 2 + 2 + 2?", "say": "What is two plus two plus two?", "answer": 6 },
+        { "id": "ml2", "level": 2, "conceptId": "mult-intro", "text": "Counting by twos: 2, 4, 6 … what comes next?", "say": "Counting by twos. Two, four, six. What comes next?", "answer": 8 },
+        { "id": "ml3", "level": 3, "conceptId": "mult-intro", "text": "3 bags with 2 apples in each. How many apples?", "say": "There are three bags, with two apples in each bag. How many apples altogether?", "answer": 6 },
+        { "id": "ml4", "level": 4, "conceptId": "mult-intro", "text": "Draw or imagine 3 rows of 4 dots. How many dots?", "say": "Imagine three rows of four dots, like a little grid. How many dots altogether?", "answer": 12 },
+        { "id": "ml5", "level": 5, "conceptId": "multdiv-facts", "text": "5 boxes with 10 pencils in each. How many pencils?", "say": "Five boxes, with ten pencils in each box. How many pencils altogether?", "answer": 50 },
+        { "id": "ml6", "level": 6, "conceptId": "multdiv-facts", "text": "What is 4 groups of 5?", "say": "What is four groups of five?", "answer": 20 }
+      ]
+    }
+  ]
+}

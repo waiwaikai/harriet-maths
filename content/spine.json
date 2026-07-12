@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "terms": [
+    { "term": 3, "start": "2026-07-21", "end": "2026-09-25" },
+    { "term": 4, "start": "2026-10-13", "end": "2026-12-17" }
+  ],
+  "weeks": [
+    { "id": "t3-w1", "term": 3, "week": 1, "start": "2026-07-21", "end": "2026-07-24", "focus": "Place value to 100→1000 (consolidate)", "stage": "S1", "conceptId": "pv-1000-consolidate" },
+    { "id": "t3-w2", "term": 3, "week": 2, "start": "2026-07-27", "end": "2026-07-31", "focus": "Place value to 1000, partitioning quantities", "stage": "S1", "conceptId": "pv-partitioning" },
+    { "id": "t3-w3", "term": 3, "week": 3, "start": "2026-08-03", "end": "2026-08-07", "focus": "Number bonds; addition–subtraction relationship", "stage": "S1", "conceptId": "bonds-addsub" },
+    { "id": "t3-w4", "term": 3, "week": 4, "start": "2026-08-10", "end": "2026-08-14", "focus": "Add/sub strategies", "stage": "S1", "conceptId": "addsub-strategies" },
+    { "id": "t3-w5", "term": 3, "week": 5, "start": "2026-08-17", "end": "2026-08-21", "focus": "Equal groups → multiplication intro", "stage": "S1", "conceptId": "mult-intro" },
+    { "id": "t3-w6", "term": 3, "week": 6, "start": "2026-08-24", "end": "2026-08-28", "focus": "Sharing/grouping → division intro; fractions as length", "stage": "S1", "conceptId": "div-fractions-intro" },
+    { "id": "t3-w7", "term": 3, "week": 7, "start": "2026-08-31", "end": "2026-09-04", "focus": "Bridge: place value to tens of thousands", "stage": "S2", "conceptId": "pv-10000s" },
+    { "id": "t3-w8", "term": 3, "week": 8, "start": "2026-09-07", "end": "2026-09-11", "focus": "Mental + written 2–3 digit addition", "stage": "S2", "conceptId": "add-23digit" },
+    { "id": "t3-w9", "term": 3, "week": 9, "start": "2026-09-14", "end": "2026-09-18", "focus": "Mental + written 2–3 digit subtraction", "stage": "S2", "conceptId": "sub-23digit" },
+    { "id": "t3-w10", "term": 3, "week": 10, "start": "2026-09-21", "end": "2026-09-25", "focus": "Consolidation + Term 3 revision sweep", "stage": "S1/S2", "conceptId": "t3-revision", "flex": true },
+    { "id": "t4-w1", "term": 4, "week": 1, "start": "2026-10-13", "end": "2026-10-16", "focus": "Re-entry recall + multiplicative relations to 10×10", "stage": "S2", "conceptId": "mult-relations" },
+    { "id": "t4-w2", "term": 4, "week": 2, "start": "2026-10-19", "end": "2026-10-23", "focus": "Multiplication/division facts; arrays", "stage": "S2", "conceptId": "multdiv-facts" },
+    { "id": "t4-w3", "term": 4, "week": 3, "start": "2026-10-26", "end": "2026-10-30", "focus": "Missing values in mult/div number sentences", "stage": "S2", "conceptId": "multdiv-missing" },
+    { "id": "t4-w4", "term": 4, "week": 4, "start": "2026-11-02", "end": "2026-11-06", "focus": "Fractions on a number line", "stage": "S2", "conceptId": "fractions-numberline" },
+    { "id": "t4-w5", "term": 4, "week": 5, "start": "2026-11-09", "end": "2026-11-13", "focus": "Decimals to 2 places (place value)", "stage": "S2", "conceptId": "decimals-2dp" },
+    { "id": "t4-w6", "term": 4, "week": 6, "start": "2026-11-16", "end": "2026-11-20", "focus": "Time — analog & digital, minutes/seconds", "stage": "S2", "conceptId": "time" },
+    { "id": "t4-w7", "term": 4, "week": 7, "start": "2026-11-23", "end": "2026-11-27", "focus": "Angles vs a right angle; 2D shape features", "stage": "S2", "conceptId": "angles-shapes" },
+    { "id": "t4-w8", "term": 4, "week": 8, "start": "2026-11-30", "end": "2026-12-04", "focus": "Data — column graphs, dot plots", "stage": "S2", "conceptId": "data-graphs" },
+    { "id": "t4-w9", "term": 4, "week": 9, "start": "2026-12-07", "end": "2026-12-11", "focus": "Extension/depth week", "stage": "S2", "conceptId": "extension-depth", "flex": true },
+    { "id": "t4-w10", "term": 4, "week": 10, "start": "2026-12-14", "end": "2026-12-17", "focus": "Big revision ramp — full-year recall pool", "stage": "all", "conceptId": "year-revision" }
+  ]
+}

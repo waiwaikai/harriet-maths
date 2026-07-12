@@ -1,0 +1,76 @@
+{
+  "bankId": "t3-w1",
+  "conceptId": "pv-1000-consolidate",
+  "parentIntro": "The big idea this week: in a number like 342, every digit has a job — the 3 means hundreds, the 4 means tens, the 2 means ones. We want her to see a three-digit number and instantly know what each digit is worth.",
+  "watchFor": "Zero as a place-holder is the classic trip-up: 407 often gets read or written as 47. If it happens, build both numbers out of blocks side by side and ask “are these the same?” — don’t correct, let her see it.",
+  "demo": {
+    "title": "Hundreds, tens and ones",
+    "say": "Today we are looking at bigger numbers. Watch how umma builds the number three hundred and forty two.",
+    "steps": [
+      {
+        "show": "",
+        "blocks": { "h": 3, "t": 0, "o": 0 },
+        "caption": "3 hundreds",
+        "say": "Here are three big blocks of one hundred. That makes three hundred."
+      },
+      {
+        "show": "",
+        "blocks": { "h": 3, "t": 4, "o": 0 },
+        "caption": "3 hundreds, 4 tens",
+        "say": "Now four sticks of ten. That adds forty more."
+      },
+      {
+        "show": "",
+        "blocks": { "h": 3, "t": 4, "o": 2 },
+        "caption": "3 hundreds, 4 tens, 2 ones",
+        "say": "And two little ones. Three hundred, forty, two. Three hundred and forty two!"
+      },
+      {
+        "show": "3 4 2",
+        "caption": "H · T · O = 342",
+        "say": "We write it with three digits. The 3 means hundreds, the 4 means tens, the 2 means ones."
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "Build the number 253 together.",
+      "model": "Use anything around you as blocks — dry pasta, LEGO, or draw squares, sticks and dots on the whiteboard: big square = 100, stick = 10, dot = 1.",
+      "steps": [
+        "Ask Harriet: “How many hundreds do we need?” (2 — draw two big squares.)",
+        "“How many tens?” (5 — draw five sticks.)",
+        "“How many ones?” (3 — draw three dots.)",
+        "Count it back together out loud: “one hundred, two hundred… two hundred and fifty… fifty-one, fifty-two, fifty-three!”",
+        "Ask her to write the digits: 2, 5, 3. Point at each and ask what it stands for."
+      ],
+      "answer": "253 = 2 hundreds, 5 tens, 3 ones"
+    },
+    {
+      "problem": "What number is 4 hundreds, 0 tens and 7 ones?",
+      "model": "Draw it first: four big squares, no sticks, seven dots. The tricky bit is the empty tens place — let her notice there are no sticks.",
+      "steps": [
+        "Let Harriet draw the blocks herself while you read the question again slowly.",
+        "Ask: “What do we write when there are NO tens?” (A zero — it holds the place.)",
+        "If she writes 47, don’t correct — build 47 in blocks next to it and ask “are these the same?”",
+        "Land on 407 together and say it out loud: “four hundred and seven.”"
+      ],
+      "answer": "407 — the 0 holds the tens place"
+    }
+  ],
+  "items": [
+    { "id": "w1-a1", "kind": "story", "text": "Harriet has 3 boxes of 100 stickers and 5 loose stickers. How many stickers altogether?", "say": "Harriet has three boxes of one hundred stickers, and five loose stickers. How many stickers altogether?", "answer": 305, "difficulty": 2 },
+    { "id": "w1-a2", "kind": "story", "text": "The library has 2 shelves of 100 books and 4 stacks of 10 books. How many books?", "say": "The library has two shelves of one hundred books, and four stacks of ten books. How many books is that?", "answer": 240, "difficulty": 2 },
+    { "id": "w1-a3", "kind": "story", "text": "A jar holds 100 marbles. Umma fills 6 jars and has 2 marbles left over. How many marbles?", "say": "A jar holds one hundred marbles. Umma fills six jars, and has two marbles left over. How many marbles are there?", "answer": 602, "difficulty": 3 },
+    { "id": "w1-a4", "kind": "story", "text": "Harriet counts 4 bags of 10 shells and 3 loose shells at the beach. How many shells?", "say": "Harriet counts four bags of ten shells, and three loose shells at the beach. How many shells altogether?", "answer": 43, "difficulty": 1 },
+    { "id": "w1-a5", "kind": "story", "text": "The school bakes 5 trays of 100 cookies and 7 extra cookies. How many cookies?", "say": "The school bakes five trays of one hundred cookies, and seven extra cookies. How many cookies altogether?", "answer": 507, "difficulty": 2 },
+    { "id": "w1-a6", "kind": "plain", "text": "What number is 100 more than 250?", "say": "What number is one hundred more, than two hundred and fifty?", "answer": 350, "difficulty": 2 },
+    { "id": "w1-a7", "kind": "plain", "text": "What number is 10 less than 640?", "say": "What number is ten less, than six hundred and forty?", "answer": 630, "difficulty": 3 },
+    { "id": "w1-a8", "kind": "plain", "text": "What number comes right after 399?", "say": "What number comes right after three hundred and ninety nine?", "answer": 400, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w1-e1", "kind": "plain", "text": "What is 10 + 5?", "say": "What is ten plus five?", "answer": 15, "difficulty": 1 },
+    { "id": "w1-e2", "kind": "plain", "text": "How many tens make 30?", "say": "How many tens make thirty?", "answer": 3, "difficulty": 1 },
+    { "id": "w1-e3", "kind": "plain", "text": "What is 20 + 4?", "say": "What is twenty plus four?", "answer": 24, "difficulty": 1 },
+    { "id": "w1-e4", "kind": "plain", "text": "What number is 1 more than 99?", "say": "What number is one more than ninety nine?", "answer": 100, "difficulty": 1 }
+  ]
+}

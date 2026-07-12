@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "concepts": [
+    {
+      "id": "pv-1000-consolidate",
+      "title": "Place value to 1000",
+      "stage": "S1",
+      "cpaNote": "Bundles of tens and hundreds (concrete) → base-10 block pictures (pictorial) → digits in a place-value chart (abstract).",
+      "prerequisites": []
+    },
+    {
+      "id": "pv-partitioning",
+      "title": "Partitioning numbers to 1000",
+      "stage": "S1",
+      "cpaNote": "Break a quantity into hundreds, tens and ones in different ways.",
+      "prerequisites": ["pv-1000-consolidate"]
+    },
+    {
+      "id": "bonds-addsub",
+      "title": "Number bonds & add–subtract relationship",
+      "stage": "S1",
+      "cpaNote": "Part-part-whole bar model.",
+      "prerequisites": ["pv-partitioning"]
+    }
+  ]
+}
