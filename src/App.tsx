@@ -3,13 +3,25 @@ import type { ProgressState } from './content/types';
 import { getBank, spine } from './content/loadBank';
 import { effectiveToday, planToday } from './engine/scheduler';
 import { getState } from './store/progress';
+import { saveState } from './store/persistence';
+import { defaultState } from './store/persistence';
+import { parseRestoreHash } from './engine/summary';
 import { warmVoices } from './voice/tts';
 import { Home } from './screens/Home';
 import { Session } from './screens/Session';
 import { Diagnostic } from './screens/Diagnostic';
 
 export default function App() {
-  const [state, setState] = useState<ProgressState>(() => getState());
+  const [state, setState] = useState<ProgressState>(() => {
+    // opening a backup link restores the carried state onto this device
+    const restored = parseRestoreHash();
+    if (restored) {
+      const merged: ProgressState = { ...defaultState(), ...restored, settings: { ...defaultState().settings, ...restored.settings } };
+      saveState(merged);
+      return merged;
+    }
+    return getState();
+  });
   const [activeWeekId, setActiveWeekId] = useState<string | null>(null);
   const [inDiagnostic, setInDiagnostic] = useState(false);
 

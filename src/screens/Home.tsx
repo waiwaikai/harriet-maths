@@ -4,7 +4,7 @@ import type { DayPlan } from '../engine/scheduler';
 import { calendarWeekIndex, effectiveToday, resolveActiveIndex } from '../engine/scheduler';
 import { getBank, spine } from '../content/loadBank';
 import { buildPlan, gapsSummary, isComplete, LADDER_NAMES, VERDICT_LABEL, verdict } from '../engine/placement';
-import { buildProgressSummary, shareSummary } from '../engine/summary';
+import { buildBackupUrl, buildProgressSummary, shareSummary } from '../engine/summary';
 import { todaysSession, updateSettings } from '../store/progress';
 
 interface Props {
@@ -125,6 +125,16 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
           >
             📋 Copy progress summary {shareStatus && `· ${shareStatus}`}
           </button>
+          <button
+            className="ghost"
+            onClick={async () => {
+              const outcome = await shareSummary(buildBackupUrl(state));
+              setShareStatus(outcome === 'shared' ? '✅ backup link shared' : outcome === 'copied' ? '✅ backup link copied' : '⚠️ couldn’t copy');
+            }}
+          >
+            💾 Backup / move to another device
+          </button>
+          <div className="parentnote">Open the backup link on the other device to carry everything across.</div>
           <div className="sessionlog">
             <b>Position:</b> {positionLine(state, today)}
             <br />

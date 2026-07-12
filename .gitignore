@@ -2,3 +2,5 @@ node_modules/
 dist/
 dev-dist/
 .claude/
+restore-link.txt
+restore-qr.html

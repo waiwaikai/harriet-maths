@@ -63,6 +63,43 @@ export function buildProgressSummary(state: ProgressState, todayISO: string, spi
   return lines.join('\n');
 }
 
+// ---------- backup / restore via link ----------
+// The whole state rides in a URL fragment so it can be AirDropped/messaged to
+// another device; the fragment never leaves the device (not sent to any server).
+
+function toBase64(json: string): string {
+  const bytes = new TextEncoder().encode(json);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_');
+}
+
+function fromBase64(b64: string): string {
+  const bin = atob(b64.replace(/-/g, '+').replace(/_/g, '/'));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+export function buildBackupUrl(state: ProgressState): string {
+  const payload = toBase64(JSON.stringify({ v: 1, data: state }));
+  return `${location.origin}${location.pathname}#restore=${payload}`;
+}
+
+/** If the URL carries a #restore= fragment, return the state inside it (and strip the fragment). */
+export function parseRestoreHash(): ProgressState | null {
+  const m = location.hash.match(/^#restore=(.+)$/);
+  if (!m) return null;
+  try {
+    const parsed = JSON.parse(fromBase64(m[1])) as { v: number; data: ProgressState };
+    history.replaceState(null, '', location.pathname + location.search);
+    if (parsed && parsed.data && Array.isArray(parsed.data.sessions)) return parsed.data;
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 /** Share via the iOS share sheet when available, else clipboard. Returns how it was delivered. */
 export async function shareSummary(text: string): Promise<'shared' | 'copied' | 'failed'> {
   try {
