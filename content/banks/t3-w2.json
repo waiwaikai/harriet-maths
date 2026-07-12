@@ -1,0 +1,74 @@
+{
+  "bankId": "t3-w2",
+  "conceptId": "pv-partitioning",
+  "parentIntro": "This week is about pulling numbers apart flexibly. 253 is 200 + 50 + 3 — but it's ALSO 240 + 13, or 100 + 153. Standard partitioning first, then the sneaky non-standard ways: that flexibility is what makes mental addition and subtraction possible later.",
+  "watchFor": "Two classics: writing 200503 when she means 253 (gluing the parts together), and panicking at things like “14 tens” — if that happens, build it with blocks and trade ten sticks for a hundred square so she SEES 14 tens become 1 hundred and 4 tens.",
+  "demo": {
+    "title": "Pulling 253 apart",
+    "say": "Today we're going to pull a number to pieces, and put it back together in different ways. Watch what umma does with two hundred and fifty three.",
+    "steps": [
+      {
+        "show": "",
+        "blocks": { "h": 2, "t": 5, "o": 3 },
+        "caption": "253 = 2 hundreds, 5 tens, 3 ones",
+        "say": "Here is two hundred and fifty three. Two hundreds, five tens, three ones."
+      },
+      {
+        "show": "253 = 200 + 50 + 3",
+        "caption": "the usual way",
+        "say": "We can write it as two hundred, plus fifty, plus three. That's the usual way to pull it apart."
+      },
+      {
+        "show": "",
+        "blocks": { "h": 2, "t": 4, "o": 13 },
+        "caption": "2 hundreds, 4 tens, 13 ones — still 253!",
+        "say": "Now watch this trick. I trade one ten for ten little ones. Two hundreds, four tens, and thirteen ones. Count it — it is STILL two hundred and fifty three!"
+      },
+      {
+        "show": "253 = 240 + 13",
+        "caption": "a sneaky way — same number!",
+        "say": "So two hundred and fifty three is also two hundred and forty, plus thirteen. Same number, different pieces. That trick will help us with take-aways very soon."
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "Pull 174 apart two different ways.",
+      "model": "Blocks or drawings: big square = 100, stick = 10, dot = 1. Build 174 first: one square, seven sticks, four dots.",
+      "steps": [
+        "Ask: “What's the usual way to pull 174 apart?” (100 + 70 + 4 — write it down.)",
+        "Now the trick: take ONE stick and trade it for ten dots. Ask: “What have we got now?” (1 hundred, 6 tens, 14 ones.)",
+        "Write the sneaky way together: 100 + 60 + 14.",
+        "Ask her: “Is it still 174? How do you know?” — let her count to convince herself."
+      ],
+      "answer": "174 = 100 + 70 + 4 = 100 + 60 + 14"
+    },
+    {
+      "problem": "Mystery number: “I have 3 hundreds and 15 tens. What number am I?”",
+      "model": "Draw 3 big squares and 15 sticks. The magic move: circle ten of the sticks — ten tens make a hundred!",
+      "steps": [
+        "Let her draw 3 squares and 15 sticks (count the sticks out loud together).",
+        "Ask: “Can we trade any sticks for a square?” (Ten sticks → one more square.)",
+        "Now count: 4 squares and 5 sticks. Ask: “So what number was I?”",
+        "If she enjoys it, fire back: “I have 2 hundreds and 13 tens — beat that one!” (330)"
+      ],
+      "answer": "450 (3 hundreds + 15 tens = 4 hundreds + 5 tens)"
+    }
+  ],
+  "items": [
+    { "id": "w2-a1", "kind": "story", "text": "Umma packs 100 cupcakes in a big box, 30 in a middle box and 6 loose ones. How many cupcakes altogether?", "say": "Umma packs one hundred cupcakes in a big box, thirty in a middle box, and six loose ones. How many cupcakes altogether?", "answer": 136, "difficulty": 1 },
+    { "id": "w2-a2", "kind": "plain", "text": "356 = 300 + ? + 6. What is the missing number?", "say": "Three hundred and fifty six equals three hundred, plus something, plus six. What is the missing number?", "answer": 50, "difficulty": 2 },
+    { "id": "w2-a3", "kind": "plain", "text": "How many tens make 280?", "say": "How many tens make two hundred and eighty?", "answer": 28, "difficulty": 2 },
+    { "id": "w2-a4", "kind": "story", "text": "Harriet saves 205 dollars. Umma swaps it for ten-dollar notes, with 5 dollars left over. How many ten-dollar notes?", "say": "Harriet saves two hundred and five dollars. Umma swaps it for ten dollar notes, with five dollars left over. How many ten dollar notes does Harriet get?", "answer": 20, "difficulty": 3 },
+    { "id": "w2-a5", "kind": "story", "text": "A bookshop gets 4 boxes of 100 books and 12 packs of 10 books. How many books altogether?", "say": "A bookshop gets four boxes of one hundred books, and twelve packs of ten books. How many books altogether?", "answer": 520, "difficulty": 3 },
+    { "id": "w2-a6", "kind": "plain", "text": "What number is 2 hundreds, 14 tens and 3 ones?", "say": "What number is two hundreds, fourteen tens, and three ones?", "answer": 343, "difficulty": 3 },
+    { "id": "w2-a7", "kind": "plain", "text": "? + 40 + 7 = 647. What is the missing number?", "say": "Something plus forty plus seven equals six hundred and forty seven. What is the missing number?", "answer": 600, "difficulty": 2 },
+    { "id": "w2-a8", "kind": "story", "text": "A farmer packs 460 eggs into cartons of 10. He fills 30 cartons before lunch. How many cartons does he fill after lunch?", "say": "A farmer packs four hundred and sixty eggs into cartons of ten. He fills thirty cartons before lunch. How many cartons does he fill after lunch?", "answer": 16, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w2-e1", "kind": "plain", "text": "What number is 3 hundreds, 2 tens and 1 one?", "say": "What number is three hundreds, two tens, and one one?", "answer": 321, "difficulty": 1 },
+    { "id": "w2-e2", "kind": "plain", "text": "How many tens make 90?", "say": "How many tens make ninety?", "answer": 9, "difficulty": 1 },
+    { "id": "w2-e3", "kind": "plain", "text": "What is 100 more than 200?", "say": "What is one hundred more than two hundred?", "answer": 300, "difficulty": 1 },
+    { "id": "w2-e4", "kind": "plain", "text": "What is 20 + 7?", "say": "What is twenty plus seven?", "answer": 27, "difficulty": 1 }
+  ]
+}

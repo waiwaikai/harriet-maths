@@ -1,0 +1,73 @@
+{
+  "bankId": "t3-w4",
+  "conceptId": "addsub-strategies",
+  "parentIntro": "The big one — this is the exact spot the diagnostic found (she missed 42 − 27). The fix is STRATEGIES, not column sums: the jump strategy (42, jump back 20 to 22, back 2 to 20, back 5 more… 15) and counting UP to find a difference (27 to 30 is 3, 30 to 42 is 12, so 15). Draw an empty number line every single time this week.",
+  "watchFor": "On things like 42 − 27 she may try digit-by-digit and hit “2 take away 7” — the moment of panic. Jump in early with the number line and ask: “would you rather jump BACK from 42, or count UP from 27?” Giving her the choice of road is half the confidence trick. Extra praise for choosing a strategy, separate from getting the answer.",
+  "demo": {
+    "title": "Two roads to 42 − 27",
+    "say": "Today umma shows you a question that looks tricky — but there are two secret roads through it, and you get to choose your favourite.",
+    "steps": [
+      {
+        "show": "42 − 27 = ?",
+        "caption": "looks scary…",
+        "say": "Forty two take away twenty seven. Looks tricky! Let's draw a number line and take the first road."
+      },
+      {
+        "show": "42 ⟵20⟵ 22",
+        "caption": "road 1: jump back 20",
+        "say": "Start at forty two. Jump back twenty — that lands on twenty two."
+      },
+      {
+        "show": "22 ⟵2⟵ 20 ⟵5⟵ 15",
+        "caption": "then back 2, then back 5 … 15!",
+        "say": "Now jump back two to land on twenty, then five more. Fifteen! Forty two take away twenty seven is fifteen."
+      },
+      {
+        "show": "27 ⟶3⟶ 30 ⟶12⟶ 42   (3 + 12 = 15)",
+        "caption": "road 2: count UP from 27",
+        "say": "Here's the second road. Start at twenty seven and count UP. Three gets you to thirty, then twelve more to forty two. Three plus twelve is fifteen. Same answer, different road!"
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "51 − 28, using jump-back on the number line.",
+      "model": "Empty number line on the whiteboard. Mark 51 at the right end. She drives the jumps; you only draw what she says.",
+      "steps": [
+        "Ask: “How big should the first jump back be?” (20 is friendly → lands on 31.)",
+        "“Now what?” (Back 1 to 30, then back 7 more → 23. Or back 8 in one go if she's brave.)",
+        "Land on 23 and write 51 − 28 = 23.",
+        "Ask the golden question: “Why did we jump 20 first, not 28 all at once?” (Friendly numbers first.)"
+      ],
+      "answer": "23"
+    },
+    {
+      "problem": "Harriet has 34 stickers. Ruby has 52. How many MORE does Ruby have?",
+      "model": "This is a DIFFERENCE question — counting up shines here. Number line: 34 on the left, 52 on the right, find the gap.",
+      "steps": [
+        "Ask: “Is anything being taken away here? Or are we finding the gap between two numbers?”",
+        "Count up together: 34 to 40 is 6. Then 40 to 52 is 12.",
+        "Add the hops: 6 + 12 = 18. Ruby has 18 more.",
+        "Name the move: “when a question says HOW MANY MORE, counting up is usually the fast road.”"
+      ],
+      "answer": "18"
+    }
+  ],
+  "items": [
+    { "id": "w4-a1", "kind": "plain", "text": "What is 46 − 20?", "say": "What is forty six take away twenty?", "answer": 26, "difficulty": 1 },
+    { "id": "w4-a2", "kind": "plain", "text": "What is 38 + 7?", "say": "What is thirty eight plus seven?", "answer": 45, "difficulty": 2 },
+    { "id": "w4-a3", "kind": "plain", "text": "What is 63 − 9?", "say": "What is sixty three take away nine?", "answer": 54, "difficulty": 2 },
+    { "id": "w4-a4", "kind": "story", "text": "Harriet reads 27 pages on Saturday and 15 pages on Sunday. How many pages altogether?", "say": "Harriet reads twenty seven pages on Saturday, and fifteen pages on Sunday. How many pages altogether?", "answer": 42, "difficulty": 2 },
+    { "id": "w4-a5", "kind": "plain", "text": "What is 52 − 26?", "say": "What is fifty two take away twenty six?", "answer": 26, "difficulty": 3 },
+    { "id": "w4-a6", "kind": "story", "text": "The class needs 70 bottle tops for craft. They have 43 so far. How many more do they need?", "say": "The class needs seventy bottle tops for craft. They have forty three so far. How many more do they need?", "answer": 27, "difficulty": 3 },
+    { "id": "w4-a7", "kind": "plain", "text": "? − 17 = 26. What is the missing number?", "say": "Something take away seventeen leaves twenty six. What is the something?", "answer": 43, "difficulty": 3 },
+    { "id": "w4-a8", "kind": "story", "text": "Umma buys 62 grapes. Harriet eats 25, then appa adds 8 more grapes to the bowl. How many grapes now?", "say": "Umma buys sixty two grapes. Harriet eats twenty five. Then appa adds eight more grapes to the bowl. How many grapes are in the bowl now?", "answer": 45, "difficulty": 3 },
+    { "id": "w4-a9", "kind": "plain", "text": "What is 304 − 10?", "say": "What is three hundred and four, take away ten?", "answer": 294, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w4-e1", "kind": "plain", "text": "What is 30 + 20?", "say": "What is thirty plus twenty?", "answer": 50, "difficulty": 1 },
+    { "id": "w4-e2", "kind": "plain", "text": "What is 15 − 5?", "say": "What is fifteen take away five?", "answer": 10, "difficulty": 1 },
+    { "id": "w4-e3", "kind": "plain", "text": "What is 9 + 6?", "say": "What is nine plus six?", "answer": 15, "difficulty": 1 },
+    { "id": "w4-e4", "kind": "plain", "text": "What is 50 − 10?", "say": "What is fifty take away ten?", "answer": 40, "difficulty": 1 }
+  ]
+}

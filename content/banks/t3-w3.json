@@ -1,0 +1,72 @@
+{
+  "bankId": "t3-w3",
+  "conceptId": "bonds-addsub",
+  "parentIntro": "This week: fact families — the idea that 8 + 5 = 13 secretly contains 13 − 5 = 8. If she owns this, subtraction stops being a separate scary thing and becomes “find the missing part”. This is the foundation the big subtraction weeks stand on.",
+  "watchFor": "Watch for counting one-by-one on fingers for things like 13 − 5. Don't correct it — just ask “what plus 5 makes 13?” and watch the shortcut click. The diagnostic showed her bonds are strong, so this week is about CONNECTING them to subtraction, not learning them.",
+  "demo": {
+    "title": "One family, four facts",
+    "say": "Today's secret: every adding fact has a take-away fact hiding inside it. Watch.",
+    "steps": [
+      {
+        "show": "🟦🟦🟦🟦🟦🟦🟦🟦  🟨🟨🟨🟨🟨",
+        "caption": "8 and 5 — two parts",
+        "say": "Here are eight blue blocks and five yellow blocks. Two parts."
+      },
+      {
+        "show": "8 + 5 = 13",
+        "caption": "the parts make the whole",
+        "say": "Together the parts make thirteen. Eight plus five equals thirteen."
+      },
+      {
+        "show": "13 − 5 = 8",
+        "caption": "whole − one part = the other part",
+        "say": "Now watch. If I hide the five yellow ones — thirteen take away five — what's left is exactly the eight. The take-away was hiding inside the add!"
+      },
+      {
+        "show": "8+5=13 · 5+8=13 · 13−5=8 · 13−8=5",
+        "caption": "one family, four facts",
+        "say": "Eight, five and thirteen are a fact family. One family gives us four facts for free!"
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "Build the whole fact family for 7, 6 and 13.",
+      "model": "Part-part-whole drawing: a big box (the whole, 13) sitting on two small boxes (the parts, 7 and 6). Or two colours of pasta.",
+      "steps": [
+        "Draw the boxes and let her place 13, 7 and 6 in the right spots.",
+        "Ask: “What adding facts live here?” (7+6=13, 6+7=13.)",
+        "Ask: “What take-away facts are hiding?” (13−6=7, 13−7=6.)",
+        "Say a fact wrong on purpose — “13 − 6 = 8?” — and let her catch you. Kids love this."
+      ],
+      "answer": "7+6=13, 6+7=13, 13−6=7, 13−7=6"
+    },
+    {
+      "problem": "Something + 9 = 16. What is the something?",
+      "model": "Cover-up trick: write ? + 9 = 16, cover the ? with your hand and ask “what's hiding under here?”",
+      "steps": [
+        "Ask her which fact family this belongs to (9, something, 16).",
+        "Flip it into a take-away together: “16 take away 9 tells us the hiding number.”",
+        "Let her find it however she likes (bridging through 10 is lovely: 9+1=10, 10+6=16, so 7).",
+        "Check by putting 7 back in: does 7 + 9 make 16? High five."
+      ],
+      "answer": "7 (because 16 − 9 = 7)"
+    }
+  ],
+  "items": [
+    { "id": "w3-a1", "kind": "plain", "text": "6 + ? = 10. What is missing?", "say": "Six plus something makes ten. What is the something?", "answer": 4, "difficulty": 1 },
+    { "id": "w3-a2", "kind": "story", "text": "Harriet has 9 shells. She finds some more, and now she has 14. How many did she find?", "say": "Harriet has nine shells. She finds some more at the beach, and now she has fourteen. How many did she find?", "answer": 5, "difficulty": 2 },
+    { "id": "w3-a3", "kind": "plain", "text": "What is 17 − 8?", "say": "What is seventeen take away eight?", "answer": 9, "difficulty": 2 },
+    { "id": "w3-a4", "kind": "plain", "text": "15 − ? = 9. What is missing?", "say": "Fifteen take away something leaves nine. What is the something?", "answer": 6, "difficulty": 2 },
+    { "id": "w3-a5", "kind": "plain", "text": "? − 7 = 6. What is the missing number?", "say": "Something take away seven leaves six. What is the something?", "answer": 13, "difficulty": 3 },
+    { "id": "w3-a6", "kind": "story", "text": "Appa bakes 25 cookies. After the family eats some, 16 are left. How many were eaten?", "say": "Appa bakes twenty five cookies. After the family eats some, sixteen are left. How many cookies were eaten?", "answer": 9, "difficulty": 3 },
+    { "id": "w3-a7", "kind": "plain", "text": "40 + ? = 100. What is missing?", "say": "Forty plus something makes one hundred. What is the something?", "answer": 60, "difficulty": 3 },
+    { "id": "w3-a8", "kind": "plain", "text": "What is 9 + 8?", "say": "What is nine plus eight?", "answer": 17, "difficulty": 2 }
+  ],
+  "warmupWins": [
+    { "id": "w3-e1", "kind": "plain", "text": "What is 7 + 3?", "say": "What is seven plus three?", "answer": 10, "difficulty": 1 },
+    { "id": "w3-e2", "kind": "plain", "text": "What is 10 − 6?", "say": "What is ten take away six?", "answer": 4, "difficulty": 1 },
+    { "id": "w3-e3", "kind": "plain", "text": "What is 5 + 5?", "say": "What is five plus five?", "answer": 10, "difficulty": 1 },
+    { "id": "w3-e4", "kind": "plain", "text": "What is double 4?", "say": "What is double four?", "answer": 8, "difficulty": 1 }
+  ]
+}

@@ -210,5 +210,62 @@ sd.diagnostic = {
 const seedScores = struggleScores(sd, '2026-07-21');
 check('diagnostic cross seeds warm-up weighting for its concept', (seedScores['sub-23digit'] ?? 0) > 1.5);
 
+// ---------- content sanity: all authored banks ----------
+console.log('\n== content: banks ==');
+import { generators } from '../src/content/generators';
+import t3w2 from '../content/banks/t3-w2.json';
+import t3w3 from '../content/banks/t3-w3.json';
+import t3w4 from '../content/banks/t3-w4.json';
+import t3w5 from '../content/banks/t3-w5.json';
+
+const allBanks = [
+  ['t3-w1', bankW1],
+  ['t3-w2', t3w2 as unknown as Bank],
+  ['t3-w3', t3w3 as unknown as Bank],
+  ['t3-w4', t3w4 as unknown as Bank],
+  ['t3-w5', t3w5 as unknown as Bank],
+] as const;
+
+for (const [id, b] of allBanks) {
+  const items = [...b.items, ...b.warmupWins];
+  const ids = items.map(i => i.id);
+  check(`${id}: unique item ids`, new Set(ids).size === ids.length);
+  check(`${id}: all items numeric answers`, items.every(i => typeof i.answer === 'number' && Number.isFinite(i.answer)));
+  check(`${id}: difficulties in 1–3`, items.every(i => i.difficulty >= 1 && i.difficulty <= 3));
+  check(`${id}: has demo steps + 2 weDo + intro`, b.demo.steps.length >= 3 && b.weDo.length === 2 && b.parentIntro.length > 40);
+  check(`${id}: warm-up wins are difficulty 1`, b.warmupWins.every(i => i.difficulty === 1));
+  check(`${id}: has a generator`, typeof generators[b.conceptId] === 'function');
+  check(`${id}: stretch band exists (d3 items)`, b.items.some(i => i.difficulty === 3));
+}
+
+// hand-verified answer spot checks (authored arithmetic)
+console.log('\n== content: answer spot checks ==');
+const findItem = (b: Bank, id: string) => [...b.items, ...b.warmupWins].find(i => i.id === id)!;
+check('w2-a6: 2 hundreds 14 tens 3 ones = 343', findItem(allBanks[1][1], 'w2-a6').answer === 343);
+check('w2-a8: 460 eggs, 30 cartons done → 16 left', findItem(allBanks[1][1], 'w2-a8').answer === 16);
+check('w3-a6: 25 baked, 16 left → 9 eaten', findItem(allBanks[2][1], 'w3-a6').answer === 9);
+check('w4-a5: 52−26 = 26', findItem(allBanks[3][1], 'w4-a5').answer === 26);
+check('w4-a8: 62−25+8 = 45', findItem(allBanks[3][1], 'w4-a8').answer === 45);
+check('w4-a9: 304−10 = 294', findItem(allBanks[3][1], 'w4-a9').answer === 294);
+check('w5-a7: 4×5−2 = 18', findItem(allBanks[4][1], 'w5-a7').answer === 18);
+
+// ---------- generators: verifiable arithmetic across difficulties ----------
+console.log('\n== content: generators ==');
+for (const conceptId of Object.keys(generators)) {
+  for (const d of [1, 2, 3] as const) {
+    const items = generators[conceptId](`test-${conceptId}`, 12, d);
+    check(`${conceptId} d${d}: 12 items, numeric answers, non-negative`,
+      items.length === 12 && items.every(i => Number.isFinite(i.answer) && i.answer >= 0));
+    check(`${conceptId} d${d}: deterministic`,
+      JSON.stringify(generators[conceptId](`test-${conceptId}`, 12, d)) === JSON.stringify(items));
+  }
+}
+// bridging guarantee: every d3 addsub subtraction of the 42−27 shape actually bridges
+const asItems = generators['addsub-strategies']('bridge-check', 30, 3)
+  .map(i => i.text.match(/^What is (\d\d) − (\d\d)\?$/))
+  .filter((m): m is RegExpMatchArray => m !== null);
+check('addsub d3 two-digit subtractions all bridge (ones of a < ones of b)',
+  asItems.length > 0 && asItems.every(m => parseInt(m[1], 10) % 10 < parseInt(m[2], 10) % 10));
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

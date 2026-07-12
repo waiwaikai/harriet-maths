@@ -21,6 +21,20 @@
       "stage": "S1",
       "cpaNote": "Part-part-whole bar model.",
       "prerequisites": ["pv-partitioning"]
+    },
+    {
+      "id": "addsub-strategies",
+      "title": "Add/sub strategies (jump & count-up)",
+      "stage": "S1",
+      "cpaNote": "Empty number line: jump-back for take-away, count-up for difference.",
+      "prerequisites": ["bonds-addsub"]
+    },
+    {
+      "id": "mult-intro",
+      "title": "Equal groups → multiplication",
+      "stage": "S1",
+      "cpaNote": "Concrete equal groups → array pictures → × symbol; commutativity via the sideways array.",
+      "prerequisites": ["addsub-strategies"]
     }
   ]
 }

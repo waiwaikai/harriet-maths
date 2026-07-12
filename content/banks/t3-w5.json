@@ -1,0 +1,72 @@
+{
+  "bankId": "t3-w5",
+  "conceptId": "mult-intro",
+  "parentIntro": "Equal groups → multiplication. The diagnostic says this is her comfort zone, so this week leans into the WHY: arrays show that 3 × 4 and 4 × 3 are the same thing seen sideways, and missing-value questions (“? groups of 5 make 30”) plant the seed of division. Expect depth days — let the app stretch her.",
+  "watchFor": "The classic slip is adding instead of grouping — “3 groups of 4” answered as 7. If it appears, draw the groups. Also encourage skip-counting OUT LOUD (4, 8, 12…) — hearing the rhythm is how the times tables eventually stick with the why attached.",
+  "demo": {
+    "title": "Groups, arrays and the sideways trick",
+    "say": "Today is about counting things in groups — and a magic trick where turning a picture sideways gives you a second fact for free.",
+    "steps": [
+      {
+        "show": "🍎🍎🍎🍎   🍎🍎🍎🍎   🍎🍎🍎🍎",
+        "caption": "3 groups of 4 apples",
+        "say": "Three groups of four apples. Let's skip count them: four, eight, twelve!"
+      },
+      {
+        "show": "4 + 4 + 4 = 12",
+        "caption": "adding the same number again and again",
+        "say": "That's four plus four plus four. Adding the same number over and over — that's what multiplying is."
+      },
+      {
+        "show": "⬤⬤⬤⬤\n⬤⬤⬤⬤\n⬤⬤⬤⬤",
+        "caption": "an array: 3 rows of 4",
+        "say": "Now line them up neatly. Three rows of four. This tidy rectangle is called an array."
+      },
+      {
+        "show": "3 × 4 = 12 = 4 × 3",
+        "caption": "turn it sideways — same answer!",
+        "say": "Here's the magic. Tip your head sideways — now it's four rows of three! Three times four and four times three are the same twelve. Every fact you learn gives you its twin for free."
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "Draw an array for 5 rows of 3. Then find its sideways twin.",
+      "model": "Dots on the whiteboard — neat rows matter, so the rectangle shape is visible. Count row by row, skip-counting aloud.",
+      "steps": [
+        "She draws 5 rows of 3 dots. Skip count together: 3, 6, 9, 12, 15.",
+        "Write 5 × 3 = 15.",
+        "Ask: “Without drawing anything new — what's 3 × 5?” Let her tip her head at the same picture.",
+        "Write 3 × 5 = 15 next to it. Ask why the answer didn't change."
+      ],
+      "answer": "15 (5 × 3 = 3 × 5 = 15)"
+    },
+    {
+      "problem": "Mystery groups: “? groups of 5 make 30.”",
+      "model": "Skip count on fingers: every finger is one group of 5. Stop when you hit 30, count the fingers up.",
+      "steps": [
+        "Read it together and ask what's missing (how many GROUPS, not how many in a group).",
+        "Skip count by 5 on fingers: 5, 10, 15, 20, 25, 30 — six fingers.",
+        "So 6 groups of 5 make 30. Write 6 × 5 = 30.",
+        "Sneaky follow-up if she's flying: “30 lollies shared into bags of 5 — how many bags?” (Same question wearing a disguise — that's division knocking.)"
+      ],
+      "answer": "6"
+    }
+  ],
+  "items": [
+    { "id": "w5-a1", "kind": "plain", "text": "What is 4 groups of 5?", "say": "What is four groups of five?", "answer": 20, "difficulty": 2 },
+    { "id": "w5-a2", "kind": "story", "text": "3 spiders, and each spider has 8 legs. How many legs altogether?", "say": "Three spiders, and each spider has eight legs. How many legs altogether?", "answer": 24, "difficulty": 2 },
+    { "id": "w5-a3", "kind": "plain", "text": "Skip counting by tens: 10, 20, 30 … what comes next?", "say": "Skip counting by tens. Ten, twenty, thirty. What comes next?", "answer": 40, "difficulty": 1 },
+    { "id": "w5-a4", "kind": "plain", "text": "? groups of 4 make 28. How many groups?", "say": "Some groups of four make twenty eight. How many groups?", "answer": 7, "difficulty": 3 },
+    { "id": "w5-a5", "kind": "story", "text": "Egg cartons hold 6 eggs each. Umma needs 24 eggs. How many cartons should she buy?", "say": "Egg cartons hold six eggs each. Umma needs twenty four eggs for baking. How many cartons should she buy?", "answer": 4, "difficulty": 3 },
+    { "id": "w5-a6", "kind": "plain", "text": "5 rows of 6 dots, plus 3 extra dots. How many dots?", "say": "Five rows of six dots, plus three extra dots. How many dots altogether?", "answer": 33, "difficulty": 3 },
+    { "id": "w5-a7", "kind": "story", "text": "4 tables with 5 chairs each, but 2 chairs are broken. How many good chairs?", "say": "There are four tables, with five chairs at each table. But two chairs are broken. How many good chairs are there?", "answer": 18, "difficulty": 3 },
+    { "id": "w5-a8", "kind": "plain", "text": "What is 2 groups of 9?", "say": "What is two groups of nine?", "answer": 18, "difficulty": 2 }
+  ],
+  "warmupWins": [
+    { "id": "w5-e1", "kind": "plain", "text": "What is 2 + 2 + 2?", "say": "What is two plus two plus two?", "answer": 6, "difficulty": 1 },
+    { "id": "w5-e2", "kind": "plain", "text": "What is 2 groups of 5?", "say": "What is two groups of five?", "answer": 10, "difficulty": 1 },
+    { "id": "w5-e3", "kind": "plain", "text": "Counting by twos: 2, 4, 6 … what comes next?", "say": "Counting by twos. Two, four, six. What comes next?", "answer": 8, "difficulty": 1 },
+    { "id": "w5-e4", "kind": "plain", "text": "What is 10 + 10 + 10?", "say": "What is ten plus ten plus ten?", "answer": 30, "difficulty": 1 }
+  ]
+}

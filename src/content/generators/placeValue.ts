@@ -80,9 +80,5 @@ export function generatePlaceValueItems(seed: string, count: number, difficulty:
   return items;
 }
 
-/** Registry: conceptId → generator. Grows as weeks are built. */
-export const generators: Record<string, (seed: string, count: number, difficulty: 1 | 2 | 3) => Item[]> = {
-  'pv-1000-consolidate': generatePlaceValueItems,
-};
-
+// registry lives in ./index.ts
 export { shuffle, seededRng };
