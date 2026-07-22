@@ -98,7 +98,8 @@ export interface WarmupResult {
 /** How today's lesson is pitched, from the adaptivity triggers. */
 export type DayDirective = 'normal' | 'depth' | 'reteach';
 
-export type SessionKind = 'lesson' | 'revision' | 'flex';
+/** 'bonus' = the optional extra ten after the daily set: recorded, but never moves the spine or the adaptivity directive. */
+export type SessionKind = 'lesson' | 'revision' | 'flex' | 'bonus';
 
 /** Mastery-based position on the spine (may drift behind the calendar, capped). */
 export interface SpineState {

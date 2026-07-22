@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { Bank, ItemResult, ProgressState, WarmupResult, WeekSpec } from '../content/types';
-import { buildFlexTen, buildFridayTen, buildIndependentTen, buildWarmup, type RecallDeps } from '../engine/recall';
+import { buildBonusTen, buildFlexTen, buildFridayTen, buildIndependentTen, buildWarmup, type RecallDeps } from '../engine/recall';
 import type { DayPlan } from '../engine/scheduler';
 import { getBank, spine } from '../content/loadBank';
 import { recordSession } from '../store/progress';
@@ -36,6 +36,12 @@ export function Session({ bank, week, plan, dateISO, state, setState, onExit }: 
   const [page, setPage] = useState<1 | 2 | 3>(1);
   const [warmupMarks, setWarmupMarks] = useState<WarmupResult[]>([]);
   const [finalResults, setFinalResults] = useState<ItemResult[] | null>(null);
+  const [bonusRound, setBonusRound] = useState(false);
+  const [bonusResults, setBonusResults] = useState<ItemResult[] | null>(null);
+
+  // the optional extra ten, pitched one notch above the first set
+  const bonusPitch = kind === 'lesson' && directive === 'reteach' ? 'normal' : 'depth';
+  const bonusTen = useMemo(() => buildBonusTen(bank, dateISO, kind === 'lesson' ? directive : 'normal', ten), [bank, dateISO, kind, directive, ten]);
 
   function handleFinish(results: ItemResult[]) {
     const next = recordSession(state, {
@@ -46,9 +52,20 @@ export function Session({ bank, week, plan, dateISO, state, setState, onExit }: 
     setFinalResults(results);
   }
 
-  const ftr = finalResults?.filter(r => r.tier === 'ftr').length ?? 0;
-  const seconds = finalResults?.filter(r => r.tier === 'second-look').length ?? 0;
-  const parked = finalResults?.filter(r => r.tier === 'parked').length ?? 0;
+  function handleBonusFinish(results: ItemResult[]) {
+    const next = recordSession(state, {
+      date: dateISO, mode: 'together', weekId: week.id, conceptId: bank.conceptId,
+      results, kind: 'bonus', directive: bonusPitch,
+    });
+    setState(next);
+    setBonusResults(results);
+  }
+
+  const shown = bonusResults ?? finalResults;
+  const shownTotal = bonusResults ? bonusTen.length : ten.length;
+  const ftr = shown?.filter(r => r.tier === 'ftr').length ?? 0;
+  const seconds = shown?.filter(r => r.tier === 'second-look').length ?? 0;
+  const parked = shown?.filter(r => r.tier === 'parked').length ?? 0;
 
   // this week's parked/second-look items, for the revision recap
   const weekStruggles = useMemo(() => {
@@ -73,16 +90,21 @@ export function Session({ bank, week, plan, dateISO, state, setState, onExit }: 
         <div className="qcount" />
       </header>
 
-      {finalResults ? (
+      {bonusRound && !bonusResults ? (
+        <TenPage key="bonus" items={bonusTen} settings={state.settings} onFinish={handleBonusFinish} />
+      ) : finalResults ? (
         <div className="card donecard">
-          <h2 className="phasetitle">🎉 All done!</h2>
-          <div className="bigscore">{ftr + seconds} / {ten.length}</div>
+          <h2 className="phasetitle">{bonusResults ? '⚡ Bonus ten done!' : '🎉 All done!'}</h2>
+          <div className="bigscore">{ftr + seconds} / {shownTotal}</div>
           <div className="scoredetail">
             <div>⭐ First try: <b>{ftr}</b></div>
             {seconds > 0 && <div>👍 After a look: <b>{seconds}</b></div>}
             {parked > 0 && <div>🌿 With umma later: <b>{parked}</b></div>}
           </div>
           <div className="streak">🔥 Streak: {state.streak} day{state.streak === 1 ? '' : 's'}</div>
+          {!bonusRound && bonusTen.length >= 5 && (
+            <button className="ghost" onClick={() => setBonusRound(true)}>⚡ 10 more — a bit trickier!</button>
+          )}
           <button className="primary" onClick={onExit}>Finish</button>
         </div>
       ) : page === 1 ? (

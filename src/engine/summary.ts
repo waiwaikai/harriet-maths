@@ -14,7 +14,12 @@ export function buildProgressSummary(state: ProgressState, todayISO: string, spi
     const active = resolveActiveIndex(state, todayISO, spine);
     const w = spine.weeks[active];
     const drift = cal - active;
-    lines.push(`Position: ${w.id} (${w.focus})${drift > 0 ? ` — ${drift} wk behind calendar` : ' — on track'}`);
+    lines.push(
+      `Position: ${w.id} (${w.focus})${
+        drift > 0 ? ` — ${drift} wk behind calendar`
+        : drift < 0 ? ` — finished ${spine.weeks[cal].id} early; bonus depth days until the calendar catches up`
+        : ' — on track'}`,
+    );
   }
 
   if (state.diagnostic?.marks.length) {
@@ -24,21 +29,25 @@ export function buildProgressSummary(state: ProgressState, todayISO: string, spi
     }
   }
 
-  // per-concept rollup
-  const byConcept = new Map<string, { n: number; ftr: number[]; seconds: number; parked: number; directives: string[] }>();
+  // per-concept rollup (bonus tens tracked separately so the main trend stays comparable)
+  const byConcept = new Map<string, { n: number; ftr: number[]; bonusFtr: number[]; seconds: number; parked: number; directives: string[] }>();
   for (const s of state.sessions) {
-    const c = byConcept.get(s.conceptId) ?? { n: 0, ftr: [], seconds: 0, parked: 0, directives: [] };
-    c.n++;
-    c.ftr.push(s.ftr);
+    const c = byConcept.get(s.conceptId) ?? { n: 0, ftr: [], bonusFtr: [], seconds: 0, parked: 0, directives: [] };
+    if (s.kind === 'bonus') {
+      c.bonusFtr.push(s.ftr);
+    } else {
+      c.n++;
+      c.ftr.push(s.ftr);
+      if (s.directive && s.directive !== 'normal') c.directives.push(`${s.date.slice(5)}:${s.directive}`);
+    }
     c.seconds += s.secondLooks;
     c.parked += s.parked;
-    if (s.directive && s.directive !== 'normal') c.directives.push(`${s.date.slice(5)}:${s.directive}`);
     byConcept.set(s.conceptId, c);
   }
   if (byConcept.size) {
     lines.push('', 'Per concept (first-time-right per session):');
     for (const [id, c] of byConcept) {
-      lines.push(`  ${id}: [${c.ftr.join(', ')}]/10 over ${c.n} session${c.n === 1 ? '' : 's'} · 👍${c.seconds} 🌿${c.parked}${c.directives.length ? ` · ${c.directives.join(' ')}` : ''}`);
+      lines.push(`  ${id}: [${c.ftr.join(', ')}]/10 over ${c.n} session${c.n === 1 ? '' : 's'} · 👍${c.seconds} 🌿${c.parked}${c.directives.length ? ` · ${c.directives.join(' ')}` : ''}${c.bonusFtr.length ? ` · ⚡bonus [${c.bonusFtr.join(', ')}]` : ''}`);
     }
   }
 

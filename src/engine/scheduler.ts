@@ -6,7 +6,7 @@ export type DayPlan =
   | { kind: 'holiday'; nextTermStart: string }
   | { kind: 'weekend' }
   | { kind: 'after-year' }
-  | { kind: 'lesson'; week: WeekSpec; directive: DayDirective; drift: number }
+  | { kind: 'lesson'; week: WeekSpec; directive: DayDirective; drift: number; ahead?: number }
   | { kind: 'revision'; week: WeekSpec; drift: number }
   | { kind: 'flex'; week: WeekSpec };
 
@@ -81,6 +81,17 @@ export function planToday(state: ProgressState, todayISO: string, spine: Spine):
 
   const cal = calendarWeekIndex(todayISO, spine);
   const active = resolveActiveIndex(state, todayISO, spine);
+
+  // Mastery may finish a week's allotted days before the calendar does (short
+  // weeks especially). The position never races ahead: hold it and serve the
+  // CALENDAR week as bonus depth days until the calendar catches up.
+  if (active > cal && cal >= 0) {
+    const calWeek = spine.weeks[cal];
+    if (calWeek.flex) return { kind: 'flex', week: calWeek };
+    if (dow === 5) return { kind: 'revision', week: calWeek, drift: 0 };
+    return { kind: 'lesson', week: calWeek, directive: 'depth', drift: 0, ahead: active - cal };
+  }
+
   const week = spine.weeks[active];
   const drift = Math.max(0, cal - active);
 
@@ -115,6 +126,9 @@ export function advanceSpine(
   const cal = calendarWeekIndex(rec.date, spine);
   if (sp.activeIndex === null) sp.activeIndex = Math.max(cal, 0);
   sp.activeIndex = skipStaleFlex(sp.activeIndex, cal, spine);
+  // already ahead of the calendar: today ran as a bonus depth day on the
+  // calendar week — it consumes no lesson days and never advances further
+  if (sp.activeIndex > cal) return sp;
   const week = spine.weeks[sp.activeIndex];
   if (!week || week.flex) return sp; // an on-track flex week holds no concept to advance
 

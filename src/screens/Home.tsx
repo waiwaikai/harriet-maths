@@ -25,9 +25,12 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
   const startable = week && getBank(week.id);
   const drift = plan.kind === 'lesson' || plan.kind === 'revision' ? plan.drift : 0;
 
+  const ahead = plan.kind === 'lesson' ? plan.ahead ?? 0 : 0;
+
   const headline =
     plan.kind === 'flex' ? '🌈 Catch-up & stretch week'
     : plan.kind === 'revision' ? '📚 Friday revision'
+    : plan.kind === 'lesson' && ahead > 0 ? `🚀 Bonus depth day: ${plan.week.focus}`
     : plan.kind === 'lesson' && plan.directive === 'depth' ? `🌟 Depth day: ${plan.week.focus}`
     : plan.kind === 'lesson' && plan.directive === 'reteach' ? `🔁 Practice-again day: ${plan.week.focus}`
     : plan.kind === 'lesson' ? `Today: ${plan.week.focus}`
@@ -64,6 +67,7 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
             <div className="todaysub">
               Term {week.term} · Week {week.week}
               {drift > 0 ? ` · 🐢 ${drift} week${drift === 1 ? '' : 's'} behind calendar` : ''}
+              {ahead > 0 ? ' · 🚀 finished the week early — extra stretch until Monday' : ''}
               {alreadyDone ? ' · ✅ done today!' : ''}
             </div>
             {startable ? (
@@ -142,7 +146,7 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
             {state.sessions.length === 0 && <div>none yet</div>}
             {state.sessions.slice(-5).reverse().map((s, i) => (
               <div key={i}>
-                {s.date} · {s.conceptId}{s.directive && s.directive !== 'normal' ? ` (${s.directive})` : ''} · ⭐{s.ftr} 👍{s.secondLooks} 🌿{s.parked} / {s.total}
+                {s.date} · {s.conceptId}{s.kind === 'bonus' ? ' ⚡bonus' : s.directive && s.directive !== 'normal' ? ` (${s.directive})` : ''} · ⭐{s.ftr} 👍{s.secondLooks} 🌿{s.parked} / {s.total}
               </div>
             ))}
           </div>
@@ -158,6 +162,9 @@ function positionLine(state: ProgressState, today: string): string {
   const active = resolveActiveIndex(state, today, spine);
   const w = spine.weeks[active];
   const drift = cal - active;
+  if (drift < 0) {
+    return `${spine.weeks[cal].id} finished early — bonus depth days until the calendar reaches ${w.id} (${w.focus})`;
+  }
   return `${w.id} (${w.focus})${drift > 0 ? ` — ${drift} wk behind calendar, flex weeks will absorb` : ' — on track'}`;
 }
 

@@ -5,7 +5,7 @@
 import type { Bank, ProgressState, SessionRecord, Spine } from '../src/content/types';
 import { advanceSpine, calendarWeekIndex, lessonDaysInWeek, planToday } from '../src/engine/scheduler';
 import { nextDirective, struggleScores } from '../src/engine/adaptivity';
-import { buildFridayTen, buildWarmup, type RecallDeps } from '../src/engine/recall';
+import { buildBonusTen, buildFridayTen, buildIndependentTen, buildWarmup, type RecallDeps } from '../src/engine/recall';
 import { defaultState } from '../src/store/persistence';
 import spineJson from '../content/spine.json';
 import t3w1 from '../content/banks/t3-w1.json';
@@ -57,6 +57,26 @@ s = addSession(s, lessonRec('2026-07-22', 'pv-1000-consolidate', 't3-w1', 7));
 s = addSession(s, lessonRec('2026-07-23', 'pv-1000-consolidate', 't3-w1', 7));
 check('after 3 lesson days (W1 allotment): advanced to W2', s.spine.activeIndex === 1, `got ${s.spine.activeIndex}`);
 check('Friday still revises W2-position week', planToday(s, '2026-07-24', spine).kind === 'revision');
+
+// ---------- ahead of calendar: hold position, serve bonus depth days ----------
+console.log('\n== scheduler: ahead of calendar ==');
+// s is now: 3 lesson days done, activeIndex = 1 (W2) but calendar still W1 (Thu 23 Jul)
+const pAhead = planToday(s, '2026-07-23', spine);
+check('ahead: Thursday serves the CALENDAR week, not W2',
+  pAhead.kind === 'lesson' && pAhead.week.id === 't3-w1', `got ${JSON.stringify(pAhead)}`);
+check('ahead: served as a depth day with ahead flag',
+  pAhead.kind === 'lesson' && pAhead.directive === 'depth' && pAhead.ahead === 1);
+const pAheadFri = planToday(s, '2026-07-24', spine);
+check('ahead: Friday revision stays on the calendar week',
+  pAheadFri.kind === 'revision' && pAheadFri.week.id === 't3-w1', `got ${JSON.stringify(pAheadFri)}`);
+const pMon = planToday(s, '2026-07-27', spine);
+check('ahead: Monday next week back to planned W2 content',
+  pMon.kind === 'lesson' && pMon.week.id === 't3-w2' && (pMon.ahead ?? 0) === 0, `got ${JSON.stringify(pMon)}`);
+// a depth day served while ahead consumes nothing and never advances further
+// (sessions cleared so the same-day replay guard doesn't mask the ahead guard)
+const spAheadDay = advanceSpine({ ...s, sessions: [] }, lessonRec('2026-07-23', 'pv-partitioning', 't3-w1', 9), spine);
+check('ahead: extra day does not consume lesson days or advance',
+  spAheadDay.activeIndex === 1 && (spAheadDay.lessonDaysDone['pv-partitioning'] ?? 0) === 0);
 
 // replay same day must not double-advance
 let s2 = freshState();
@@ -168,6 +188,26 @@ check('Friday re-asks parked item', fri.some(i => i.answer === 305 && i.id.start
 check('Friday re-asks second-look item', fri.some(i => i.id === 'retry-w1-a2'));
 check('Friday does not re-ask first-time-right item', !fri.some(i => i.id === 'retry-w1-a4'));
 check('Friday items unique texts', new Set(fri.map(i => i.text)).size === fri.length);
+
+// ---------- bonus ten ----------
+console.log('\n== recall: bonus ten ==');
+const firstTen = buildIndependentTen(bankW1, '2026-07-23', 'normal');
+const bonus = buildBonusTen(bankW1, '2026-07-23', 'normal', firstTen);
+check('bonus: 10 items', bonus.length === 10, `got ${bonus.length}`);
+check('bonus: no repeats from the first set', !bonus.some(b => firstTen.some(f => f.text === b.text)));
+check('bonus: pitched harder (all difficulty 3 after a normal set)', bonus.every(i => i.difficulty === 3));
+check('bonus: deterministic per day',
+  JSON.stringify(buildBonusTen(bankW1, '2026-07-23', 'normal', firstTen)) === JSON.stringify(bonus));
+const reteachTen = buildIndependentTen(bankW1, '2026-07-23', 'reteach');
+const bonusAfterReteach = buildBonusTen(bankW1, '2026-07-23', 'reteach', reteachTen);
+check('bonus after reteach: one notch up, not depth', bonusAfterReteach.every(i => i.difficulty === 2));
+// a bonus session never moves the spine position
+let sb = freshState();
+sb = addSession(sb, lessonRec('2026-07-21', 'pv-1000-consolidate', 't3-w1', 7));
+const bonusRec: SessionRecord = { ...lessonRec('2026-07-22', 'pv-1000-consolidate', 't3-w1', 6), kind: 'bonus' };
+const spBonus = advanceSpine(sb, bonusRec, spine);
+check('bonus session does not consume a lesson day',
+  (spBonus.lessonDaysDone['pv-1000-consolidate'] ?? 0) === 1 && spBonus.activeIndex === 0);
 
 // ---------- placement ----------
 console.log('\n== placement ==');

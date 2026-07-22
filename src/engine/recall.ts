@@ -96,6 +96,21 @@ export function buildIndependentTen(bank: Bank, dateISO: string, directive: DayD
 }
 
 /**
+ * The optional "10 more" after the daily set: same concept, one notch harder
+ * than the first ten, never repeating a question she just saw.
+ */
+export function buildBonusTen(bank: Bank, dateISO: string, firstDirective: DayDirective, exclude: Item[]): Item[] {
+  const rng = seededRng(`bonus-${dateISO}-${bank.bankId}`);
+  const gen = generators[bank.conceptId];
+  const used = new Set(exclude.map(i => i.text));
+  const difficulty: 1 | 2 | 3 = firstDirective === 'reteach' ? 2 : 3;
+  const authored = shuffle(rng, bank.items.filter(i => i.difficulty === difficulty && !used.has(i.text))).slice(0, 4);
+  const generated = (gen ? gen(`bonus-${dateISO}-${bank.bankId}`, 12, difficulty) : [])
+    .filter(i => !used.has(i.text) && !authored.some(a => a.text === i.text));
+  return shuffle(rng, [...authored, ...generated]).slice(0, 10);
+}
+
+/**
  * Friday: this week's content, front-loading the exact questions she didn't
  * get first-time-right this week, topped up with fresh variants.
  */
