@@ -14,12 +14,12 @@ export function buildProgressSummary(state: ProgressState, todayISO: string, spi
     const active = resolveActiveIndex(state, todayISO, spine);
     const w = spine.weeks[active];
     const drift = cal - active;
-    lines.push(
-      `Position: ${w.id} (${w.focus})${
-        drift > 0 ? ` — ${drift} wk behind calendar`
-        : drift < 0 ? ` — finished ${spine.weeks[cal].id} early; bonus depth days until the calendar catches up`
-        : ' — on track'}`,
-    );
+    if (drift < 0) {
+      const serving = spine.weeks[cal];
+      lines.push(`Position: ${serving.id} (${serving.focus}) — finished early, on bonus depth days; ${w.id} starts ${w.start}`);
+    } else {
+      lines.push(`Position: ${w.id} (${w.focus})${drift > 0 ? ` — ${drift} wk behind calendar` : ' — on track'}`);
+    }
   }
 
   if (state.diagnostic?.marks.length) {

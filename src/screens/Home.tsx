@@ -163,7 +163,8 @@ function positionLine(state: ProgressState, today: string): string {
   const w = spine.weeks[active];
   const drift = cal - active;
   if (drift < 0) {
-    return `${spine.weeks[cal].id} finished early — bonus depth days until the calendar reaches ${w.id} (${w.focus})`;
+    const serving = spine.weeks[cal];
+    return `${serving.id} (${serving.focus}) — finished early, on bonus depth days; ${w.id} starts ${fmtDate(w.start)}`;
   }
   return `${w.id} (${w.focus})${drift > 0 ? ` — ${drift} wk behind calendar, flex weeks will absorb` : ' — on track'}`;
 }

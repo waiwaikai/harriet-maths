@@ -72,6 +72,14 @@ check('ahead: Friday revision stays on the calendar week',
 const pMon = planToday(s, '2026-07-27', spine);
 check('ahead: Monday next week back to planned W2 content',
   pMon.kind === 'lesson' && pMon.week.id === 't3-w2' && (pMon.ahead ?? 0) === 0, `got ${JSON.stringify(pMon)}`);
+// parent-facing position lines lead with the week being SERVED, not the internal mastery week
+import { buildProgressSummary } from '../src/engine/summary';
+const aheadSummary = buildProgressSummary(s, '2026-07-24', spine);
+const posLine = aheadSummary.split('\n').find(l => l.startsWith('Position:'))!;
+check('ahead: summary position line leads with the calendar week',
+  posLine.startsWith('Position: t3-w1'), posLine);
+check('ahead: summary says when the next week starts', posLine.includes('t3-w2 starts 2026-07-27'), posLine);
+
 // a depth day served while ahead consumes nothing and never advances further
 // (sessions cleared so the same-day replay guard doesn't mask the ahead guard)
 const spAheadDay = advanceSpine({ ...s, sessions: [] }, lessonRec('2026-07-23', 'pv-partitioning', 't3-w1', 9), spine);
