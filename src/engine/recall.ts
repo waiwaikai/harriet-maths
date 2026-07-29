@@ -34,6 +34,16 @@ function itemsForConcept(conceptId: string, weekId: string, deps: RecallDeps, se
 export function buildWarmup(state: ProgressState, currentBank: Bank, dateISO: string, deps: RecallDeps): Item[] {
   const rng = seededRng(`warmup-${dateISO}`);
   const covered = coveredConcepts(state).filter(c => c.conceptId !== currentBank.conceptId);
+  // yesterday's warm-up shouldn't come round again today while the pool allows
+  const recent = new Set<string>();
+  for (const s of state.sessions) {
+    if (daysBetween(s.date, dateISO) > 2 || s.date > dateISO) continue;
+    for (const w of s.warmup ?? []) recent.add(w.itemId);
+  }
+  const notRecent = (pool: Item[]) => {
+    const fresh = pool.filter(i => !recent.has(i.id));
+    return fresh.length ? fresh : pool;
+  };
 
   // no history yet → easy wins from the current bank
   if (covered.length === 0) {
@@ -53,7 +63,7 @@ export function buildWarmup(state: ProgressState, currentBank: Bank, dateISO: st
 
   // 1 · guaranteed win: least-struggled covered concept, easiest item
   const winConcept = [...weighted].sort((a, b) => (struggles[a.conceptId] ?? 0) - (struggles[b.conceptId] ?? 0))[0];
-  const winPool = itemsForConcept(winConcept.conceptId, winConcept.weekId, deps, dateISO, 1);
+  const winPool = notRecent(itemsForConcept(winConcept.conceptId, winConcept.weekId, deps, dateISO, 1));
   if (winPool.length) picks.push(winPool[Math.floor(rng() * winPool.length)]);
 
   // 2–3 · weighted picks across the pool
@@ -61,8 +71,8 @@ export function buildWarmup(state: ProgressState, currentBank: Bank, dateISO: st
     const total = weighted.reduce((s, c) => s + c.weight, 0);
     let roll = rng() * total;
     const chosen = weighted.find(c => (roll -= c.weight) <= 0) ?? weighted[weighted.length - 1];
-    const pool = itemsForConcept(chosen.conceptId, chosen.weekId, deps, `${dateISO}-${k}`, 2)
-      .filter(i => !picks.some(p => p.id === i.id));
+    const pool = notRecent(itemsForConcept(chosen.conceptId, chosen.weekId, deps, `${dateISO}-${k}`, 2)
+      .filter(i => !picks.some(p => p.id === i.id)));
     if (pool.length) picks.push(pool[Math.floor(rng() * pool.length)]);
   }
 
@@ -75,24 +85,66 @@ export function buildWarmup(state: ProgressState, currentBank: Bank, dateISO: st
   return picks.slice(0, 3);
 }
 
+/**
+ * Questions she has already been asked in the last `days` days, by text.
+ * A concept runs Mon–Thu, so without this the small authored pool at a given
+ * difficulty repeats every single day and the week feels stuck.
+ */
+export function recentlyAskedTexts(state: ProgressState, dateISO: string, days = 6): Set<string> {
+  const seen = new Set<string>();
+  for (const s of state.sessions) {
+    if (daysBetween(s.date, dateISO) > days || s.date > dateISO) continue;
+    for (const r of s.results) if (r.text) seen.add(r.text);
+  }
+  return seen;
+}
+
+/**
+ * Up to `need` items she hasn't just seen. Deliberately returns SHORT rather
+ * than padding with repeats — the parametric generator fills the gap, which is
+ * what keeps a Mon–Thu week feeling fresh once the authored pool is used up.
+ */
+function unseen(rng: () => number, pool: Item[], need: number, recent: Set<string>): Item[] {
+  return shuffle(rng, pool.filter(i => !recent.has(i.text))).slice(0, need);
+}
+
 /** The independent 10 for a lesson day, pitched by the adaptivity directive. */
-export function buildIndependentTen(bank: Bank, dateISO: string, directive: DayDirective = 'normal'): Item[] {
+export function buildIndependentTen(
+  bank: Bank,
+  dateISO: string,
+  directive: DayDirective = 'normal',
+  recent: Set<string> = new Set(),
+): Item[] {
   const rng = seededRng(`youdo-${dateISO}-${bank.bankId}-${directive}`);
   const gen = generators[bank.conceptId];
+  const band: 1 | 2 | 3 = directive === 'reteach' ? 1 : directive === 'depth' ? 3 : 2;
+  const authoredPool = directive === 'reteach'
+    ? bank.items.filter(i => i.difficulty <= 2)
+    : directive === 'depth'
+      ? bank.items.filter(i => i.difficulty >= 3)
+      : bank.items;
+  // Deliberately modest: a concept runs Mon–Thu and authored items never repeat
+  // within the week, so taking only a few a day keeps story-framed questions
+  // (her literacy on-ramp) present every day instead of all on Monday.
+  const wantAuthored = directive === 'normal' ? 3 : 2;
 
-  if (directive === 'reteach') {
-    const gentle = shuffle(rng, bank.items.filter(i => i.difficulty <= 2)).slice(0, 3);
-    const generated = gen ? gen(`${dateISO}-${bank.bankId}-easy`, 10 - gentle.length, 1) : [];
-    return shuffle(rng, [...gentle, ...generated]);
+  const authored = unseen(rng, authoredPool, wantAuthored, recent);
+  const taken = new Set([...authored.map(i => i.text), ...recent]);
+  // over-generate so filtering out repeats still leaves a full set
+  const generated = (gen ? gen(`${dateISO}-${bank.bankId}-${directive}`, 40, band) : [])
+    .filter(i => !taken.has(i.text))
+    .filter((i, idx, arr) => arr.findIndex(o => o.text === i.text) === idx)
+    .slice(0, 10 - authored.length);
+
+  const out = [...authored, ...generated];
+  // only if both pools ran dry does anything she's already seen come back
+  if (out.length < 10) {
+    for (const i of shuffle(rng, [...authoredPool, ...(gen ? gen(`${dateISO}-${bank.bankId}-fill`, 40, band) : [])])) {
+      if (out.length >= 10) break;
+      if (!out.some(o => o.text === i.text)) out.push(i);
+    }
   }
-  if (directive === 'depth') {
-    const hard = shuffle(rng, bank.items.filter(i => i.difficulty >= 3)).slice(0, 4);
-    const generated = gen ? gen(`${dateISO}-${bank.bankId}-deep`, 10 - hard.length, 3) : [];
-    return shuffle(rng, [...hard, ...generated]);
-  }
-  const authored = shuffle(rng, bank.items).slice(0, 4);
-  const generated = gen ? gen(`${dateISO}-${bank.bankId}`, 10 - authored.length, 2) : [];
-  return shuffle(rng, [...authored, ...generated]);
+  return shuffle(rng, out);
 }
 
 /**

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import type { ProgressState } from './content/types';
 import { getBank, spine } from './content/loadBank';
-import { effectiveToday, planToday } from './engine/scheduler';
+import { planToday } from './engine/scheduler';
+import { useTodayISO } from './useToday';
 import { getState } from './store/progress';
 import { saveState } from './store/persistence';
 import { defaultState } from './store/persistence';
@@ -27,7 +28,7 @@ export default function App() {
 
   useEffect(() => { warmVoices(); }, []);
 
-  const today = effectiveToday(state.settings.dateOverride);
+  const today = useTodayISO(state.settings.dateOverride);
   const plan = planToday(state, today, spine);
 
   if (inDiagnostic) {
@@ -52,5 +53,5 @@ export default function App() {
     }
   }
 
-  return <Home state={state} setState={setState} plan={plan} onStart={setActiveWeekId} onStartDiagnostic={() => setInDiagnostic(true)} />;
+  return <Home state={state} setState={setState} plan={plan} today={today} onStart={setActiveWeekId} onStartDiagnostic={() => setInDiagnostic(true)} />;
 }

@@ -83,6 +83,10 @@ button.linkish {
   border: 2px solid #eef1fa; border-radius: 12px; width: 100%;
 }
 .sessionlog { font-size: 14px; color: var(--muted); margin-top: 10px; }
+.dayreadout { font-size: 15px; background: #eef7f0; border-radius: 14px; padding: 12px; margin-bottom: 10px; }
+.dayreadout.warn { background: #fdeec8; }
+.pretendwarn { background: #fdeec8; border-radius: 14px; padding: 12px; font-size: 15px; font-weight: 600; margin-top: 10px; }
+button:disabled { opacity: 0.5; }
 .diagreport { font-size: 14px; margin: 12px 0; background: #fdf8ec; border-radius: 14px; padding: 12px; }
 .diagline { margin: 5px 0; }
 .diaglvl { color: var(--muted); }

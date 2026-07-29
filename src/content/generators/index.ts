@@ -14,7 +14,7 @@ const generatePartitioningItems: Gen = (seed, count, difficulty) => {
   const items: Item[] = [];
   for (let i = 0; i < count; i++) {
     const id = `gen-part-${seed}-${i}`;
-    const form = difficulty === 1 ? i % 2 : difficulty === 2 ? i % 3 : 2 + (i % 2);
+    const form = difficulty === 1 ? i % 2 : difficulty === 2 ? i % 3 : 2 + (i % 3);
     if (form === 0) {
       // missing part: 356 = 300 + ? + 6
       const h = pickInt(rng, 1, 9), t = pickInt(rng, 1, 9), o = pickInt(rng, 1, 9);
@@ -43,7 +43,7 @@ const generatePartitioningItems: Gen = (seed, count, difficulty) => {
         say: `What number is ${unit(h, 'hundred')}, and ${unit(t, 'ten')}?`,
         answer: h * 100 + t * 10,
       });
-    } else {
+    } else if (form === 3) {
       // missing hundreds: ? + 40 + 7 = 647
       const h = pickInt(rng, 1, 9), t = pickInt(rng, 1, 9), o = pickInt(rng, 1, 9);
       const n = h * 100 + t * 10 + o;
@@ -52,6 +52,22 @@ const generatePartitioningItems: Gen = (seed, count, difficulty) => {
         text: `? + ${t * 10} + ${o} = ${n}. What is missing?`,
         say: `Something plus ${t * 10}, plus ${o}, equals ${n}. What is the missing number?`,
         answer: h * 100,
+      });
+    } else {
+      // digit-value reasoning: the report-card focus, "what is that digit worth?"
+      // digits must differ or "what is the 3 worth?" would be ambiguous
+      const h = pickInt(rng, 1, 9);
+      let t = pickInt(rng, 1, 9);
+      while (t === h) t = (t % 9) + 1;
+      let o = pickInt(rng, 1, 9);
+      while (o === h || o === t) o = (o % 9) + 1;
+      const n = h * 100 + t * 10 + o;
+      const askHundreds = rng() < 0.5;
+      items.push({
+        id, kind: 'plain', difficulty,
+        text: `In the number ${n}, what is the ${askHundreds ? h : t} worth?`,
+        say: `In the number ${n}, what is the ${askHundreds ? h : t} worth?`,
+        answer: askHundreds ? h * 100 : t * 10,
       });
     }
   }
@@ -205,14 +221,33 @@ const generateMultItems: Gen = (seed, count, difficulty) => {
         answer: (start + 3) * step,
       });
     } else if (difficulty === 2) {
-      const groups = pickInt(rng, 2, 5);
+      const form = i % 3;
+      const groups = pickInt(rng, 2, 6);
       const each = [2, 3, 4, 5, 10][pickInt(rng, 0, 4)];
-      items.push({
-        id, kind: 'plain', difficulty,
-        text: `What is ${groups} groups of ${each}?`,
-        say: `What is ${groups} groups of ${each}?`,
-        answer: groups * each,
-      });
+      if (form === 0) {
+        items.push({
+          id, kind: 'plain', difficulty,
+          text: `What is ${groups} groups of ${each}?`,
+          say: `What is ${groups} groups of ${each}?`,
+          answer: groups * each,
+        });
+      } else if (form === 1) {
+        items.push({
+          id, kind: 'plain', difficulty,
+          text: `${groups} rows of ${each} dots. How many dots?`,
+          say: `${groups} rows of ${each} dots. How many dots altogether?`,
+          answer: groups * each,
+        });
+      } else {
+        const bags = pickInt(rng, 2, 6);
+        const per = [2, 3, 5, 10][pickInt(rng, 0, 3)];
+        items.push({
+          id, kind: 'plain', difficulty,
+          text: `${bags} bags with ${per} apples in each. How many apples?`,
+          say: `${bags} bags, with ${per} apples in each bag. How many apples altogether?`,
+          answer: bags * per,
+        });
+      }
     } else {
       const form = i % 3;
       if (form === 0) {

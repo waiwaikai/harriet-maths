@@ -62,7 +62,12 @@
     { "id": "w4-a6", "kind": "story", "text": "The class needs 70 bottle tops for craft. They have 43 so far. How many more do they need?", "say": "The class needs seventy bottle tops for craft. They have forty three so far. How many more do they need?", "answer": 27, "difficulty": 3 },
     { "id": "w4-a7", "kind": "plain", "text": "? − 17 = 26. What is the missing number?", "say": "Something take away seventeen leaves twenty six. What is the something?", "answer": 43, "difficulty": 3 },
     { "id": "w4-a8", "kind": "story", "text": "Umma buys 62 grapes. Harriet eats 25, then appa adds 8 more grapes to the bowl. How many grapes now?", "say": "Umma buys sixty two grapes. Harriet eats twenty five. Then appa adds eight more grapes to the bowl. How many grapes are in the bowl now?", "answer": 45, "difficulty": 3 },
-    { "id": "w4-a9", "kind": "plain", "text": "What is 304 − 10?", "say": "What is three hundred and four, take away ten?", "answer": 294, "difficulty": 3 }
+    { "id": "w4-a9", "kind": "plain", "text": "What is 304 − 10?", "say": "What is three hundred and four, take away ten?", "answer": 294, "difficulty": 3 },
+    { "id": "w4-a10", "kind": "plain", "text": "What is 63 − 28?", "say": "What is sixty three take away twenty eight?", "answer": 35, "difficulty": 3 },
+    { "id": "w4-a11", "kind": "story", "text": "Harriet has 45 stickers, gives 18 to Ruby, then earns 12 more. How many now?", "say": "Harriet has forty five stickers. She gives eighteen to Ruby, then earns twelve more. How many stickers does she have now?", "answer": 39, "difficulty": 3 },
+    { "id": "w4-a12", "kind": "plain", "text": "What is the difference between 34 and 71?", "say": "What is the difference between thirty four, and seventy one?", "answer": 37, "difficulty": 3 },
+    { "id": "w4-a13", "kind": "plain", "text": "? + 27 = 62. What is the missing number?", "say": "Something plus twenty seven equals sixty two. What is the missing number?", "answer": 35, "difficulty": 3 },
+    { "id": "w4-a14", "kind": "plain", "text": "What is 406 − 100?", "say": "What is four hundred and six, take away one hundred?", "answer": 306, "difficulty": 3 }
   ],
   "warmupWins": [
     { "id": "w4-e1", "kind": "plain", "text": "What is 30 + 20?", "say": "What is thirty plus twenty?", "answer": 50, "difficulty": 1 },

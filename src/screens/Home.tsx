@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ProgressState } from '../content/types';
 import type { DayPlan } from '../engine/scheduler';
-import { calendarWeekIndex, effectiveToday, resolveActiveIndex } from '../engine/scheduler';
+import { calendarWeekIndex, resolveActiveIndex, toISO } from '../engine/scheduler';
 import { getBank, spine } from '../content/loadBank';
 import { buildPlan, gapsSummary, isComplete, LADDER_NAMES, VERDICT_LABEL, verdict } from '../engine/placement';
 import { buildBackupUrl, buildProgressSummary, shareSummary } from '../engine/summary';
@@ -11,15 +11,17 @@ interface Props {
   state: ProgressState;
   setState: (s: ProgressState) => void;
   plan: DayPlan;
+  today: string;
   onStart: (weekId: string) => void;
   onStartDiagnostic: () => void;
 }
 
-export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Props) {
+export function Home({ state, setState, plan, today, onStart, onStartDiagnostic }: Props) {
   const [showParent, setShowParent] = useState(false);
   const [shareStatus, setShareStatus] = useState('');
-  const today = effectiveToday(state.settings.dateOverride);
   const alreadyDone = todaysSession(state, today);
+  const pretending = state.settings.dateOverride !== null;
+  const realToday = toISO(new Date());
 
   const week = plan.kind === 'lesson' || plan.kind === 'revision' || plan.kind === 'flex' ? plan.week : null;
   const startable = week && getBank(week.id);
@@ -65,11 +67,19 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
           <>
             <div className="todayhead">{headline}</div>
             <div className="todaysub">
-              Term {week.term} · Week {week.week}
+              {fmtShort(today)} · Term {week.term} · Week {week.week}
               {drift > 0 ? ` · 🐢 ${drift} week${drift === 1 ? '' : 's'} behind calendar` : ''}
               {ahead > 0 ? ' · 🚀 finished the week early — extra stretch until Monday' : ''}
               {alreadyDone ? ' · ✅ done today!' : ''}
             </div>
+            {pretending && (
+              <div className="pretendwarn">
+                ⚠️ Pretend date is on — the app is stuck on {fmtShort(today)}, not today ({fmtShort(realToday)}).
+                <button className="ghost" onClick={() => setState(updateSettings(state, { dateOverride: null }))}>
+                  Use the real date
+                </button>
+              </div>
+            )}
             {startable ? (
               <button className="primary bigstart" onClick={() => onStart(week.id)}>
                 {alreadyDone ? 'Play again ▶️' : 'Start! ▶️'}
@@ -87,22 +97,28 @@ export function Home({ state, setState, plan, onStart, onStartDiagnostic }: Prop
 
       {showParent && (
         <div className="card parentcard">
+          <div className={`dayreadout ${pretending ? 'warn' : ''}`}>
+            📅 App day: <b>{fmtDate(today)}</b>
+            <br />
+            {pretending
+              ? <>⚠️ pretend date — the real date is {fmtDate(realToday)}</>
+              : <>✅ this is the real date on this device</>}
+          </div>
+          <button
+            className="ghost"
+            disabled={!pretending}
+            onClick={() => setState(updateSettings(state, { dateOverride: null }))}
+          >
+            {pretending ? '↩️ Use the real date' : '✅ Already on the real date'}
+          </button>
           <label>
-            Pretend today is:
+            Pretend today is (testing only):
             <input
               type="date"
               value={state.settings.dateOverride ?? ''}
               onChange={e => setState(updateSettings(state, { dateOverride: e.target.value || null }))}
             />
           </label>
-          <button className="ghost" onClick={() => setState(updateSettings(state, { dateOverride: '2026-07-21' }))}>
-            Jump to Term 3 Week 1 (Tue 21 Jul)
-          </button>
-          {state.settings.dateOverride && (
-            <button className="ghost" onClick={() => setState(updateSettings(state, { dateOverride: null }))}>
-              Back to real today
-            </button>
-          )}
           {isComplete(state.diagnostic) && (
             <div className="diagreport">
               <b>🧭 Placement report ({state.diagnostic!.date})</b>
@@ -172,4 +188,9 @@ function positionLine(state: ProgressState, today: string): string {
 function fmtDate(iso: string): string {
   const [y, m, d] = iso.split('-').map(Number);
   return new Date(y, m - 1, d).toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long' });
+}
+
+function fmtShort(iso: string): string {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' });
 }

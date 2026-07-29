@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { Bank, ItemResult, ProgressState, WarmupResult, WeekSpec } from '../content/types';
-import { buildBonusTen, buildFlexTen, buildFridayTen, buildIndependentTen, buildWarmup, type RecallDeps } from '../engine/recall';
+import { buildBonusTen, buildFlexTen, buildFridayTen, buildIndependentTen, buildWarmup, recentlyAskedTexts, type RecallDeps } from '../engine/recall';
 import type { DayPlan } from '../engine/scheduler';
 import { getBank, spine } from '../content/loadBank';
 import { recordSession } from '../store/progress';
@@ -30,7 +30,8 @@ export function Session({ bank, week, plan, dateISO, state, setState, onExit }: 
   const ten = useMemo(() => {
     if (kind === 'revision') return buildFridayTen(state, bank, week.id, dateISO);
     if (kind === 'flex') return buildFlexTen(state, bank, dateISO, deps);
-    return buildIndependentTen(bank, dateISO, directive);
+    // a concept runs all week — skip what she's already been asked in recent days
+    return buildIndependentTen(bank, dateISO, directive, recentlyAskedTexts(state, dateISO));
   }, [bank, dateISO, kind, directive]);
 
   const [page, setPage] = useState<1 | 2 | 3>(1);

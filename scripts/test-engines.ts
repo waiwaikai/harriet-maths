@@ -315,5 +315,62 @@ const asItems = generators['addsub-strategies']('bridge-check', 30, 3)
 check('addsub d3 two-digit subtractions all bridge (ones of a < ones of b)',
   asItems.length > 0 && asItems.every(m => parseInt(m[1], 10) % 10 < parseInt(m[2], 10) % 10));
 
+// ---------- no-repeat across a Mon-Thu week (the "same questions" bug) ----------
+console.log('\n== recall: day-to-day freshness ==');
+import { recentlyAskedTexts } from '../src/engine/recall';
+
+for (const [bankId, bnk] of allBanks) {
+  if (!['t3-w1', 't3-w2', 't3-w3', 't3-w4', 't3-w5'].includes(bankId)) continue;
+  for (const dir of ['depth', 'normal'] as const) {
+    let st: ProgressState = freshState();
+    const weekDays = ['2026-07-27', '2026-07-28', '2026-07-29', '2026-07-30'];
+    const perDay: string[][] = [];
+    for (const d of weekDays) {
+      const ten = buildIndependentTen(bnk, d, dir, recentlyAskedTexts(st, d));
+      perDay.push(ten.map(i => i.text));
+      const rec: SessionRecord = {
+        date: d, mode: 'together', weekId: bankId, conceptId: bnk.conceptId,
+        total: 10, ftr: 10, secondLooks: 0, parked: 0, kind: 'lesson', directive: dir,
+        results: ten.map(i => ({ itemId: i.id, tier: 'ftr' as const, answer: i.answer, text: i.text, expected: i.answer })),
+      };
+      st = { ...st, sessions: [...st.sessions, rec] };
+    }
+    check(`${bankId} ${dir}: every day serves a full ten`, perDay.every(day => day.length === 10),
+      perDay.map(d => d.length).join(','));
+    check(`${bankId} ${dir}: no question repeats across the week`,
+      perDay.every((day, i) => i === 0 || day.every(t => !perDay[i - 1].includes(t))));
+    check(`${bankId} ${dir}: no duplicates within a day`,
+      perDay.every(day => new Set(day).size === day.length));
+    // story-framed authored questions should appear every day, not all on Monday
+    const authoredTexts = new Set(bnk.items.map(i => i.text));
+    check(`${bankId} ${dir}: authored items on every day of the week`,
+      perDay.every(day => day.some(t => authoredTexts.has(t))),
+      perDay.map(day => day.filter(t => authoredTexts.has(t)).length).join(','));
+  }
+}
+
+// enough authored depth items that a depth week keeps real story problems
+for (const [bankId, bnk] of allBanks) {
+  const hard = bnk.items.filter(i => i.difficulty === 3).length;
+  check(`${bankId}: >=8 authored depth items (Mon-Thu at 4/day)`, hard >= 8, `has ${hard}`);
+}
+
+// generated depth items must be unambiguous and correct
+console.log('\n== generators: depth-band sanity ==');
+const partDepth = generators['pv-partitioning']('amb-check', 60, 3);
+const digitQs = partDepth.filter(i => /what is the \d worth/i.test(i.text));
+check('digit-value items exist at depth', digitQs.length > 0);
+check('digit-value items name a digit that appears exactly once', digitQs.every(i => {
+  const m = i.text.match(/In the number (\d+), what is the (\d) worth\?/);
+  if (!m) return false;
+  return m[1].split('').filter(d => d === m[2]).length === 1;
+}));
+check('digit-value answers equal the digit\'s place value', digitQs.every(i => {
+  const m = i.text.match(/In the number (\d+), what is the (\d) worth\?/)!;
+  const idx = m[1].indexOf(m[2]);
+  const place = Math.pow(10, m[1].length - 1 - idx);
+  return i.answer === Number(m[2]) * place;
+}));
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed ? 1 : 0);

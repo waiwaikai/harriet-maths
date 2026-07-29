@@ -61,7 +61,15 @@
     { "id": "w3-a5", "kind": "plain", "text": "? − 7 = 6. What is the missing number?", "say": "Something take away seven leaves six. What is the something?", "answer": 13, "difficulty": 3 },
     { "id": "w3-a6", "kind": "story", "text": "Appa bakes 25 cookies. After the family eats some, 16 are left. How many were eaten?", "say": "Appa bakes twenty five cookies. After the family eats some, sixteen are left. How many cookies were eaten?", "answer": 9, "difficulty": 3 },
     { "id": "w3-a7", "kind": "plain", "text": "40 + ? = 100. What is missing?", "say": "Forty plus something makes one hundred. What is the something?", "answer": 60, "difficulty": 3 },
-    { "id": "w3-a8", "kind": "plain", "text": "What is 9 + 8?", "say": "What is nine plus eight?", "answer": 17, "difficulty": 2 }
+    { "id": "w3-a8", "kind": "plain", "text": "What is 9 + 8?", "say": "What is nine plus eight?", "answer": 17, "difficulty": 2 },
+    { "id": "w3-a9", "kind": "story", "text": "Harriet had some marbles. She lost 7 and now has 18. How many did she start with?", "say": "Harriet had some marbles. She lost seven, and now she has eighteen. How many did she start with?", "answer": 25, "difficulty": 3 },
+    { "id": "w3-a10", "kind": "plain", "text": "What is 8 + 7 + 2?", "say": "What is eight, plus seven, plus two?", "answer": 17, "difficulty": 3 },
+    { "id": "w3-a11", "kind": "plain", "text": "If 9 + 6 = 15, what is 15 − 9?", "say": "If nine plus six equals fifteen, what is fifteen take away nine?", "answer": 6, "difficulty": 3 },
+    { "id": "w3-a12", "kind": "plain", "text": "What is 100 − 35?", "say": "What is one hundred take away thirty five?", "answer": 65, "difficulty": 3 },
+    { "id": "w3-a13", "kind": "story", "text": "There are 20 cupcakes. Harriet eats 3 and appa eats 5. How many are left?", "say": "There are twenty cupcakes. Harriet eats three, and appa eats five. How many cupcakes are left?", "answer": 12, "difficulty": 3 },
+    { "id": "w3-a14", "kind": "story", "text": "Harriet reads 8 pages, then some more. She has read 21 pages in total. How many more did she read?", "say": "Harriet reads eight pages, then reads some more. Altogether she has read twenty one pages. How many more did she read?", "answer": 13, "difficulty": 3 },
+    { "id": "w3-a15", "kind": "story", "text": "A bus has 30 seats. 12 people get on, then 9 more. How many seats are still empty?", "say": "A bus has thirty seats. Twelve people get on, then nine more people get on. How many seats are still empty?", "answer": 9, "difficulty": 3 },
+    { "id": "w3-a16", "kind": "story", "text": "Umma buys 16 apples. She uses some for a pie and has 7 left. How many did she use?", "say": "Umma buys sixteen apples. She uses some for a pie, and has seven left. How many apples did she use?", "answer": 9, "difficulty": 3 }
   ],
   "warmupWins": [
     { "id": "w3-e1", "kind": "plain", "text": "What is 7 + 3?", "say": "What is seven plus three?", "answer": 10, "difficulty": 1 },

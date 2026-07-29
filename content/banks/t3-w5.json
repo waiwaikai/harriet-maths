@@ -61,7 +61,12 @@
     { "id": "w5-a5", "kind": "story", "text": "Egg cartons hold 6 eggs each. Umma needs 24 eggs. How many cartons should she buy?", "say": "Egg cartons hold six eggs each. Umma needs twenty four eggs for baking. How many cartons should she buy?", "answer": 4, "difficulty": 3 },
     { "id": "w5-a6", "kind": "plain", "text": "5 rows of 6 dots, plus 3 extra dots. How many dots?", "say": "Five rows of six dots, plus three extra dots. How many dots altogether?", "answer": 33, "difficulty": 3 },
     { "id": "w5-a7", "kind": "story", "text": "4 tables with 5 chairs each, but 2 chairs are broken. How many good chairs?", "say": "There are four tables, with five chairs at each table. But two chairs are broken. How many good chairs are there?", "answer": 18, "difficulty": 3 },
-    { "id": "w5-a8", "kind": "plain", "text": "What is 2 groups of 9?", "say": "What is two groups of nine?", "answer": 18, "difficulty": 2 }
+    { "id": "w5-a8", "kind": "plain", "text": "What is 2 groups of 9?", "say": "What is two groups of nine?", "answer": 18, "difficulty": 2 },
+    { "id": "w5-a9", "kind": "plain", "text": "An array has 4 rows and 24 dots altogether. How many dots in each row?", "say": "An array has four rows, and twenty four dots altogether. How many dots are in each row?", "answer": 6, "difficulty": 3 },
+    { "id": "w5-a10", "kind": "story", "text": "3 packets of 10 stickers and 4 packets of 5 stickers. How many stickers?", "say": "Three packets of ten stickers, and four packets of five stickers. How many stickers altogether?", "answer": 50, "difficulty": 3 },
+    { "id": "w5-a11", "kind": "plain", "text": "What is 6 groups of 4, take away 4?", "say": "What is six groups of four, take away four?", "answer": 20, "difficulty": 3 },
+    { "id": "w5-a12", "kind": "story", "text": "A farmer has 7 chickens. How many chicken legs altogether?", "say": "A farmer has seven chickens. Each chicken has two legs. How many chicken legs altogether?", "answer": 14, "difficulty": 3 },
+    { "id": "w5-a13", "kind": "story", "text": "6 friends share 3 pizzas. Each pizza is cut into 4 slices. How many slices altogether?", "say": "Six friends share three pizzas. Each pizza is cut into four slices. How many slices are there altogether?", "answer": 12, "difficulty": 3 }
   ],
   "warmupWins": [
     { "id": "w5-e1", "kind": "plain", "text": "What is 2 + 2 + 2?", "say": "What is two plus two plus two?", "answer": 6, "difficulty": 1 },

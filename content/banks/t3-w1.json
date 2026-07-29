@@ -65,7 +65,12 @@
     { "id": "w1-a5", "kind": "story", "text": "The school bakes 5 trays of 100 cookies and 7 extra cookies. How many cookies?", "say": "The school bakes five trays of one hundred cookies, and seven extra cookies. How many cookies altogether?", "answer": 507, "difficulty": 2 },
     { "id": "w1-a6", "kind": "plain", "text": "What number is 100 more than 250?", "say": "What number is one hundred more, than two hundred and fifty?", "answer": 350, "difficulty": 2 },
     { "id": "w1-a7", "kind": "plain", "text": "What number is 10 less than 640?", "say": "What number is ten less, than six hundred and forty?", "answer": 630, "difficulty": 3 },
-    { "id": "w1-a8", "kind": "plain", "text": "What number comes right after 399?", "say": "What number comes right after three hundred and ninety nine?", "answer": 400, "difficulty": 3 }
+    { "id": "w1-a8", "kind": "plain", "text": "What number comes right after 399?", "say": "What number comes right after three hundred and ninety nine?", "answer": 400, "difficulty": 3 },
+    { "id": "w1-a9", "kind": "plain", "text": "A number has 6 in the tens place, 2 in the hundreds place and 8 in the ones place. What is the number?", "say": "A number has six in the tens place, two in the hundreds place, and eight in the ones place. What is the number?", "answer": 268, "difficulty": 3 },
+    { "id": "w1-a10", "kind": "plain", "text": "I am 10 less than 500. What number am I?", "say": "I am ten less than five hundred. What number am I?", "answer": 490, "difficulty": 3 },
+    { "id": "w1-a11", "kind": "plain", "text": "Counting back by hundreds: 830, 730, 630 … what comes next?", "say": "Counting back by hundreds. Eight hundred and thirty, seven hundred and thirty, six hundred and thirty. What comes next?", "answer": 530, "difficulty": 3 },
+    { "id": "w1-a12", "kind": "plain", "text": "Which is more: 4 hundreds and 3 ones, or 3 hundreds and 40 ones? Say the bigger number.", "say": "Which is more. Four hundreds and three ones, or three hundreds and forty ones? Say the bigger number.", "answer": 403, "difficulty": 3 },
+    { "id": "w1-a13", "kind": "story", "text": "Harriet counts 2 boxes of 100 pencils, 13 bundles of 10 pencils and 4 loose ones. How many pencils?", "say": "Harriet counts two boxes of one hundred pencils, thirteen bundles of ten pencils, and four loose ones. How many pencils altogether?", "answer": 334, "difficulty": 3 }
   ],
   "warmupWins": [
     { "id": "w1-e1", "kind": "plain", "text": "What is 10 + 5?", "say": "What is ten plus five?", "answer": 15, "difficulty": 1 },
