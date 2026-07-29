@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { ProgressState } from '../content/types';
 import type { DayPlan } from '../engine/scheduler';
-import { calendarWeekIndex, resolveActiveIndex, toISO } from '../engine/scheduler';
+import { calendarWeekIndex, resolveActiveIndex, schoolDayLabel, toISO } from '../engine/scheduler';
 import { getBank, spine } from '../content/loadBank';
 import { buildPlan, gapsSummary, isComplete, LADDER_NAMES, VERDICT_LABEL, verdict } from '../engine/placement';
 import { buildBackupUrl, buildProgressSummary, shareSummary } from '../engine/summary';
@@ -28,6 +28,7 @@ export function Home({ state, setState, plan, today, onStart, onStartDiagnostic 
   const drift = plan.kind === 'lesson' || plan.kind === 'revision' ? plan.drift : 0;
 
   const ahead = plan.kind === 'lesson' ? plan.ahead ?? 0 : 0;
+  const dayLabel = week ? schoolDayLabel(today, week) : '';
 
   const headline =
     plan.kind === 'flex' ? '🌈 Catch-up & stretch week'
@@ -68,10 +69,15 @@ export function Home({ state, setState, plan, today, onStart, onStartDiagnostic 
             <div className="todayhead">{headline}</div>
             <div className="todaysub">
               {fmtShort(today)} · Term {week.term} · Week {week.week}
+              {dayLabel ? ` · ${dayLabel}` : ''}
               {drift > 0 ? ` · 🐢 ${drift} week${drift === 1 ? '' : 's'} behind calendar` : ''}
               {ahead > 0 ? ' · 🚀 finished the week early — extra stretch until Monday' : ''}
-              {alreadyDone ? ' · ✅ done today!' : ''}
             </div>
+            {alreadyDone && (
+              <div className="donetoday">
+                ✅ Already done on {fmtShort(alreadyDone.date)} — ⭐{alreadyDone.ftr}/{alreadyDone.total} first try
+              </div>
+            )}
             {pretending && (
               <div className="pretendwarn">
                 ⚠️ Pretend date is on — the app is stuck on {fmtShort(today)}, not today ({fmtShort(realToday)}).

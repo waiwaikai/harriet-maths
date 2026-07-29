@@ -315,6 +315,18 @@ const asItems = generators['addsub-strategies']('bridge-check', 30, 3)
 check('addsub d3 two-digit subtractions all bridge (ones of a < ones of b)',
   asItems.length > 0 && asItems.every(m => parseInt(m[1], 10) % 10 < parseInt(m[2], 10) % 10));
 
+// ---------- school-day labelling ----------
+console.log('\n== scheduler: day-of-week labels ==');
+import { schoolDayLabel } from '../src/engine/scheduler';
+const w1spec = spine.weeks[0]; // t3-w1, Tue 21 - Fri 24 (3 lesson days)
+const w2spec = spine.weeks[1]; // t3-w2, Mon 27 - Fri 31 (4 lesson days)
+check('W1 Tue = Day 1 of 3', schoolDayLabel('2026-07-21', w1spec) === 'Day 1 of 3', schoolDayLabel('2026-07-21', w1spec));
+check('W1 Thu = Day 3 of 3', schoolDayLabel('2026-07-23', w1spec) === 'Day 3 of 3');
+check('W1 Fri = revision', schoolDayLabel('2026-07-24', w1spec) === 'Friday · revision');
+check('W2 Mon = Day 1 of 4', schoolDayLabel('2026-07-27', w2spec) === 'Day 1 of 4');
+check('W2 Thu = Day 4 of 4', schoolDayLabel('2026-07-30', w2spec) === 'Day 4 of 4', schoolDayLabel('2026-07-30', w2spec));
+check('date outside the week yields no label', schoolDayLabel('2026-08-05', w2spec) === '');
+
 // ---------- no-repeat across a Mon-Thu week (the "same questions" bug) ----------
 console.log('\n== recall: day-to-day freshness ==');
 import { recentlyAskedTexts } from '../src/engine/recall';

@@ -86,6 +86,7 @@ button.linkish {
 .dayreadout { font-size: 15px; background: #eef7f0; border-radius: 14px; padding: 12px; margin-bottom: 10px; }
 .dayreadout.warn { background: #fdeec8; }
 .pretendwarn { background: #fdeec8; border-radius: 14px; padding: 12px; font-size: 15px; font-weight: 600; margin-top: 10px; }
+.donetoday { background: #eef7f0; border-radius: 12px; padding: 10px; font-size: 15px; font-weight: 600; margin: 8px 0; }
 button:disabled { opacity: 0.5; }
 .diagreport { font-size: 14px; margin: 12px 0; background: #fdf8ec; border-radius: 14px; padding: 12px; }
 .diagline { margin: 5px 0; }

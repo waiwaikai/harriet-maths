@@ -50,6 +50,28 @@ export function lessonDaysInWeek(week: WeekSpec): number {
   return n;
 }
 
+/**
+ * Which school day of the week this date is, e.g. "Day 4 of 4".
+ * Fridays are the revision day and sit outside the Mon–Thu lesson run.
+ */
+export function schoolDayLabel(iso: string, week: WeekSpec): string {
+  const dow = parseISO(iso).getDay();
+  if (dow === 5) return 'Friday · revision';
+  const total = lessonDaysInWeek(week);
+  let n = 0;
+  const d = parseISO(week.start);
+  const end = parseISO(week.end);
+  while (d <= end) {
+    const wd = d.getDay();
+    if (wd >= 1 && wd <= 4) {
+      n++;
+      if (toISO(d) === iso) return `Day ${n} of ${total}`;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return '';
+}
+
 /** Once the calendar has moved past a flex week, the position slides through it — that's the absorption. */
 function skipStaleFlex(idx: number, cal: number, spine: Spine): number {
   while (spine.weeks[idx]?.flex && cal > idx) idx++;
