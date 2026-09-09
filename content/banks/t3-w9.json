@@ -1,0 +1,83 @@
+{
+  "bankId": "t3-w9",
+  "conceptId": "sub-23digit",
+  "parentIntro": "This is THE week of the year for her — the placement diagnostic found exactly one gap, and it was multi-digit subtraction (she missed 42 − 27 and 407 − 10). Her number bonds are strong, so the facts aren't the problem: choosing a road is. Three roads this week — COUNT UP for numbers close together, JUMP BACK for taking away a chunk, and ROUND-AND-PAY-BACK for near-hundreds.",
+  "watchFor": "Two things. The “2 take away 7” panic when the top digit is smaller — head it off with a number line before she freezes. And zeros: 300 − 156 and 604 − 8 are the ones that catch her out. Praise the CHOICE of road out loud and separately from the answer — that's the habit we're actually building this week.",
+  "demo": {
+    "title": "Three roads to a take-away",
+    "say": "Take-aways are the thing you and I have been working on all year. Today, three different roads — and the clever bit is picking the right one.",
+    "steps": [
+      {
+        "show": "342 − 156 = ?",
+        "caption": "these two are far apart… but not that far",
+        "say": "Three hundred and forty two, take away one hundred and fifty six. Let's count UP from the smaller one and see how big the gap is."
+      },
+      {
+        "show": "156 ⟶4⟶ 160 ⟶140⟶ 300 ⟶42⟶ 342",
+        "caption": "count up in friendly hops",
+        "say": "From one fifty six, four gets us to a hundred and sixty. Then a hundred and forty gets us to three hundred. Then forty two more to three hundred and forty two."
+      },
+      {
+        "show": "4 + 140 + 42 = 186",
+        "caption": "add the hops — that's the answer",
+        "say": "Now add up all the hops. Four, plus a hundred and forty, plus forty two. One hundred and eighty six!"
+      },
+      {
+        "show": "check: 156 + 186 = 342 ✓",
+        "caption": "add it back to prove it",
+        "say": "And here's how we know we're right. Put it back: one fifty six plus one eighty six gives three hundred and forty two. It fits!"
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "254 − 138, by counting up.",
+      "model": "Empty number line. Put 138 at the left end and 254 at the right. She decides the hops; you only draw what she tells you.",
+      "steps": [
+        "Ask: “are these two numbers close together or far apart?” (Fairly close — so counting up is the fast road.)",
+        "Hop to a friendly number first: 138 → 140 is 2. Then 140 → 250 is 110. Then 250 → 254 is 4.",
+        "Add the hops together: 2 + 110 + 4 = 116.",
+        "Check by adding back: 138 + 116 = 254. Ask her to say why that check works."
+      ],
+      "answer": "116"
+    },
+    {
+      "problem": "The sneaky one: 234 − 99.",
+      "model": "Number line again. 99 is desperate to be 100 — and this is where subtraction plays a trick on you.",
+      "steps": [
+        "Ask what friendly number 99 is nearly (100), then do the easy sum: 234 − 100 = 134.",
+        "Now the golden question: “we took away ONE TOO MANY — so do we give it back, or take more away?”",
+        "Let her reason it out with the number line. Taking away too much means we owe her one: 134 + 1 = 135.",
+        "Compare with last week's adding trick, where you paid one BACK. Ask why they go opposite ways — this is the bit that makes her think."
+      ],
+      "answer": "135"
+    }
+  ],
+  "items": [
+    { "id": "w9-a1", "kind": "plain", "text": "What is 60 − 20?", "say": "What is sixty take away twenty?", "answer": 40, "difficulty": 1 },
+    { "id": "w9-a2", "kind": "plain", "text": "What is 45 − 5?", "say": "What is forty five take away five?", "answer": 40, "difficulty": 1 },
+    { "id": "w9-a3", "kind": "plain", "text": "What is 72 − 38?", "say": "What is seventy two take away thirty eight?", "answer": 34, "difficulty": 2 },
+    { "id": "w9-a4", "kind": "plain", "text": "What is 150 − 30?", "say": "What is one hundred and fifty, take away thirty?", "answer": 120, "difficulty": 2 },
+    { "id": "w9-a5", "kind": "plain", "text": "What is 83 − 27?", "say": "What is eighty three take away twenty seven?", "answer": 56, "difficulty": 2 },
+    { "id": "w9-a6", "kind": "plain", "text": "What is 300 − 156?", "say": "What is three hundred take away one hundred and fifty six?", "answer": 144, "difficulty": 3 },
+    { "id": "w9-a7", "kind": "plain", "text": "What is 405 − 10?", "say": "What is four hundred and five, take away ten?", "answer": 395, "difficulty": 3 },
+    { "id": "w9-a8", "kind": "plain", "text": "What is the difference between 156 and 342?", "say": "What is the difference between one hundred and fifty six, and three hundred and forty two?", "answer": 186, "difficulty": 3 },
+    { "id": "w9-a9", "kind": "plain", "text": "What is 234 − 99?", "say": "What is two hundred and thirty four, take away ninety nine?", "answer": 135, "difficulty": 3 },
+    { "id": "w9-a10", "kind": "plain", "text": "? − 46 = 38. What is the missing number?", "say": "Something take away forty six leaves thirty eight. What is the something?", "answer": 84, "difficulty": 3 },
+    { "id": "w9-a11", "kind": "story", "text": "Harriet has 250 stickers and gives away 138. How many are left?", "say": "Harriet has two hundred and fifty stickers, and gives away one hundred and thirty eight. How many are left?", "answer": 112, "difficulty": 3 },
+    { "id": "w9-a12", "kind": "story", "text": "A jar holds 500 beads. 275 are used for a necklace. How many beads are left?", "say": "A jar holds five hundred beads. Two hundred and seventy five are used for a necklace. How many beads are left?", "answer": 225, "difficulty": 3 },
+    { "id": "w9-a13", "kind": "plain", "text": "What is 604 − 8?", "say": "What is six hundred and four, take away eight?", "answer": 596, "difficulty": 3 },
+    { "id": "w9-a14", "kind": "story", "text": "The class needs 200 bottle tops. They have 143. How many more do they need?", "say": "The class needs two hundred bottle tops. They have one hundred and forty three. How many more do they need?", "answer": 57, "difficulty": 3 },
+    { "id": "w9-a15", "kind": "plain", "text": "What is 82 − 47?", "say": "What is eighty two take away forty seven?", "answer": 35, "difficulty": 3 },
+    { "id": "w9-a16", "kind": "plain", "text": "What is 1,000 − 250?", "say": "What is one thousand take away two hundred and fifty?", "answer": 750, "difficulty": 3 },
+    { "id": "w9-a17", "kind": "story", "text": "Umma had $180. She spent $95, then earned $40. How much does she have now?", "say": "Umma had one hundred and eighty dollars. She spent ninety five dollars, then earned forty dollars. How much does she have now?", "answer": 125, "difficulty": 3 },
+    { "id": "w9-a18", "kind": "plain", "text": "What is 706 − 100?", "say": "What is seven hundred and six, take away one hundred?", "answer": 606, "difficulty": 3 },
+    { "id": "w9-a19", "kind": "plain", "text": "Two numbers have a difference of 25. The smaller one is 68. What is the bigger one?", "say": "Two numbers have a difference of twenty five. The smaller one is sixty eight. What is the bigger one?", "answer": 93, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w9-e1", "kind": "plain", "text": "What is 20 − 10?", "say": "What is twenty take away ten?", "answer": 10, "difficulty": 1 },
+    { "id": "w9-e2", "kind": "plain", "text": "What is 15 − 5?", "say": "What is fifteen take away five?", "answer": 10, "difficulty": 1 },
+    { "id": "w9-e3", "kind": "plain", "text": "What is 50 − 20?", "say": "What is fifty take away twenty?", "answer": 30, "difficulty": 1 },
+    { "id": "w9-e4", "kind": "plain", "text": "What is 9 − 4?", "say": "What is nine take away four?", "answer": 5, "difficulty": 1 }
+  ]
+}

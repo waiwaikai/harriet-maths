@@ -91,7 +91,13 @@ export function Home({ state, setState, plan, today, onStart, onStartDiagnostic 
                 {alreadyDone ? 'Play again ▶️' : 'Start! ▶️'}
               </button>
             ) : (
-              <p className="parentnote">⚠️ No question bank built for {week.id} yet.</p>
+              <>
+                <div className="pretendwarn">
+                  📚 This week’s new content hasn’t been written yet — today will be a <b>revision session</b> across
+                  everything covered so far. Worth mentioning to Claude at the next check-in.
+                </div>
+                <button className="primary bigstart" onClick={() => onStart(week.id)}>Start revision ▶️</button>
+              </>
             )}
           </>
         )}

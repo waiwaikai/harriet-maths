@@ -1,0 +1,81 @@
+{
+  "bankId": "t3-w6",
+  "conceptId": "div-fractions-intro",
+  "parentIntro": "Division is multiplication's twin — and it comes in two flavours she needs to tell apart: SHARING (12 biscuits between 3 plates → how many each?) and GROUPING (12 biscuits into bags of 4 → how many bags?). Same numbers, different question. Fractions land the same week because a half is just a fair share of one whole.",
+  "watchFor": "Two classics. First, mixing up “shared between 4” and “groups of 4” — if she's stuck, ask “are we sharing them out, or packing them up?”. Second, thinking eighths are BIGGER than quarters because 8 is bigger than 4 — the paper strip fixes this instantly, so fold one rather than explaining.",
+  "demo": {
+    "title": "Sharing, grouping, and the same 12 biscuits",
+    "say": "Today we share things out fairly. Watch what happens to twelve biscuits — and then watch the same twelve biscuits do something sneaky.",
+    "steps": [
+      {
+        "show": "🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪🍪",
+        "caption": "12 biscuits",
+        "say": "Here are twelve biscuits. Let's share them out fairly."
+      },
+      {
+        "show": "🍪🍪🍪🍪 | 🍪🍪🍪🍪 | 🍪🍪🍪🍪",
+        "caption": "shared between 3 plates → 4 each · 12 ÷ 3 = 4",
+        "say": "Three plates, one biscuit at a time, round and round. Four on every plate! Twelve shared between three is four."
+      },
+      {
+        "show": "[🍪🍪🍪🍪] [🍪🍪🍪🍪] [🍪🍪🍪🍪]",
+        "caption": "packed into bags of 4 → 3 bags · 12 ÷ 4 = 3",
+        "say": "Now the sneaky bit. Same twelve biscuits, but this time I pack them into bags of four. How many bags? Three! Sharing and packing both use dividing."
+      },
+      {
+        "show": "▭▭▭▭▭▭▭▭\n½ = ▭▭▭▭   ¼ = ▭▭   ⅛ = ▭",
+        "caption": "the more pieces, the SMALLER each one",
+        "say": "And here's a paper strip. Fold it in half, then half again for quarters, then again for eighths. The more pieces we make, the smaller each piece gets. An eighth is tiny!"
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "20 grapes. First share them between 4 people. Then pack them into bags of 5.",
+      "model": "Real grapes, pasta or counters — 20 of something she can move. Sharing: deal them out one at a time like cards. Grouping: scoop them into piles.",
+      "steps": [
+        "Deal 20 counters into 4 piles, one at a time. Count a pile: 5 each. Write 20 ÷ 4 = 5.",
+        "Now push them all back together and make piles of 5 instead. Count the piles: 4. Write 20 ÷ 5 = 4.",
+        "Ask the golden question: “Why did we get 5 the first time and 4 the second time, with the same 20 grapes?”",
+        "Land it: “the first asked HOW MANY EACH, the second asked HOW MANY BAGS.”"
+      ],
+      "answer": "20 ÷ 4 = 5 each · 20 ÷ 5 = 4 bags"
+    },
+    {
+      "problem": "Fold a paper strip into eighths. What is a quarter of 16?",
+      "model": "A real strip of paper (cut the long side of an A4). Fold in half, half again, half again — open it out and there are 8 equal pieces.",
+      "steps": [
+        "Fold and open together, counting the pieces at each stage: 2, then 4, then 8.",
+        "Ask her to point to one half, then one quarter, then one eighth. Ask which is biggest — let the paper answer.",
+        "Now the numbers: draw 16 dots and share them into 4 equal groups (a quarter of 16).",
+        "Count one group: 4. Say it together — “a quarter of 16 is 4.” If she's flying, ask for an eighth of 16 (2)."
+      ],
+      "answer": "A quarter of 16 is 4 (and an eighth of 16 is 2)"
+    }
+  ],
+  "items": [
+    { "id": "w6-a1", "kind": "plain", "text": "12 shared between 2. How many each?", "say": "Twelve shared between two. How many each?", "answer": 6, "difficulty": 1 },
+    { "id": "w6-a2", "kind": "plain", "text": "What is half of 10?", "say": "What is half of ten?", "answer": 5, "difficulty": 1 },
+    { "id": "w6-a3", "kind": "plain", "text": "15 shared between 3. How many each?", "say": "Fifteen shared between three. How many each?", "answer": 5, "difficulty": 2 },
+    { "id": "w6-a4", "kind": "plain", "text": "How many bags of 2 can you make from 10?", "say": "How many bags of two can you make from ten?", "answer": 5, "difficulty": 2 },
+    { "id": "w6-a5", "kind": "plain", "text": "What is a quarter of 8?", "say": "What is a quarter of eight?", "answer": 2, "difficulty": 2 },
+    { "id": "w6-a6", "kind": "plain", "text": "What is half of 30?", "say": "What is half of thirty?", "answer": 15, "difficulty": 2 },
+    { "id": "w6-a7", "kind": "plain", "text": "How many groups of 3 are in 27?", "say": "How many groups of three are in twenty seven?", "answer": 9, "difficulty": 3 },
+    { "id": "w6-a8", "kind": "plain", "text": "If 4 × 6 = 24, what is 24 ÷ 4?", "say": "If four times six equals twenty four, what is twenty four divided by four?", "answer": 6, "difficulty": 3 },
+    { "id": "w6-a9", "kind": "plain", "text": "? ÷ 5 = 4. What is the missing number?", "say": "Something divided by five equals four. What is the something?", "answer": 20, "difficulty": 3 },
+    { "id": "w6-a10", "kind": "story", "text": "A ribbon is 40 cm long. Harriet cuts it in half, then cuts one half in half again. How long is the smallest piece?", "say": "A ribbon is forty centimetres long. Harriet cuts it in half, then cuts one half in half again. How long is the smallest piece?", "answer": 10, "difficulty": 3 },
+    { "id": "w6-a11", "kind": "story", "text": "24 cupcakes are shared equally onto 4 plates. Then umma puts 1 more cupcake on each plate. How many are on each plate now?", "say": "Twenty four cupcakes are shared equally onto four plates. Then umma puts one more cupcake on each plate. How many cupcakes are on each plate now?", "answer": 7, "difficulty": 3 },
+    { "id": "w6-a12", "kind": "story", "text": "3 friends share 18 grapes equally. Then one friend gives 2 of hers away. How many does she have left?", "say": "Three friends share eighteen grapes equally. Then one friend gives two of hers away. How many grapes does she have left?", "answer": 4, "difficulty": 3 },
+    { "id": "w6-a13", "kind": "story", "text": "A cake is cut into eighths. Two pieces are eaten. How many eighths are left?", "say": "A cake is cut into eighths. Two pieces are eaten. How many eighths are left?", "answer": 6, "difficulty": 3 },
+    { "id": "w6-a14", "kind": "story", "text": "26 stickers are shared equally between 5 children. How many stickers are left over?", "say": "Twenty six stickers are shared equally between five children. How many stickers are left over?", "answer": 1, "difficulty": 3 },
+    { "id": "w6-a15", "kind": "story", "text": "A 24 cm ribbon is cut into 4 equal pieces. How long is each piece?", "say": "A twenty four centimetre ribbon is cut into four equal pieces. How long is each piece?", "answer": 6, "difficulty": 3 },
+    { "id": "w6-a16", "kind": "plain", "text": "What is a quarter of 20?", "say": "What is a quarter of twenty?", "answer": 5, "difficulty": 3 },
+    { "id": "w6-a17", "kind": "story", "text": "30 pencils are packed into pots of 5. How many pots?", "say": "Thirty pencils are packed into pots of five. How many pots?", "answer": 6, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w6-e1", "kind": "plain", "text": "What is half of 8?", "say": "What is half of eight?", "answer": 4, "difficulty": 1 },
+    { "id": "w6-e2", "kind": "plain", "text": "10 shared between 5. How many each?", "say": "Ten shared between five. How many each?", "answer": 2, "difficulty": 1 },
+    { "id": "w6-e3", "kind": "plain", "text": "How many groups of 2 are in 8?", "say": "How many groups of two are in eight?", "answer": 4, "difficulty": 1 },
+    { "id": "w6-e4", "kind": "plain", "text": "What is half of 6?", "say": "What is half of six?", "answer": 3, "difficulty": 1 }
+  ]
+}

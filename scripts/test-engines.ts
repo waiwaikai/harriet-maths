@@ -265,6 +265,11 @@ import t3w2 from '../content/banks/t3-w2.json';
 import t3w3 from '../content/banks/t3-w3.json';
 import t3w4 from '../content/banks/t3-w4.json';
 import t3w5 from '../content/banks/t3-w5.json';
+import t3w6 from '../content/banks/t3-w6.json';
+import t3w7 from '../content/banks/t3-w7.json';
+import t3w8 from '../content/banks/t3-w8.json';
+import t3w9 from '../content/banks/t3-w9.json';
+import t3w10 from '../content/banks/t3-w10.json';
 
 const allBanks = [
   ['t3-w1', bankW1],
@@ -272,7 +277,19 @@ const allBanks = [
   ['t3-w3', t3w3 as unknown as Bank],
   ['t3-w4', t3w4 as unknown as Bank],
   ['t3-w5', t3w5 as unknown as Bank],
+  ['t3-w6', t3w6 as unknown as Bank],
+  ['t3-w7', t3w7 as unknown as Bank],
+  ['t3-w8', t3w8 as unknown as Bank],
+  ['t3-w9', t3w9 as unknown as Bank],
+  ['t3-w10', t3w10 as unknown as Bank],
 ] as const;
+
+// every spine week that has arrived must have a bank wired into the app
+check('all Term 3 weeks have a registered bank',
+  spine.weeks.filter(w => w.term === 3).every(w => allBanks.some(([id]) => id === w.id)),
+  spine.weeks.filter(w => w.term === 3 && !allBanks.some(([id]) => id === w.id)).map(w => w.id).join(','));
+check('every bank conceptId matches its spine week',
+  allBanks.every(([id, b]) => spine.weeks.find(w => w.id === id)?.conceptId === b.conceptId));
 
 for (const [id, b] of allBanks) {
   const items = [...b.items, ...b.warmupWins];
@@ -296,6 +313,25 @@ check('w4-a5: 52−26 = 26', findItem(allBanks[3][1], 'w4-a5').answer === 26);
 check('w4-a8: 62−25+8 = 45', findItem(allBanks[3][1], 'w4-a8').answer === 45);
 check('w4-a9: 304−10 = 294', findItem(allBanks[3][1], 'w4-a9').answer === 294);
 check('w5-a7: 4×5−2 = 18', findItem(allBanks[4][1], 'w5-a7').answer === 18);
+check('w6-a11: 24÷4 then +1 each = 7', findItem(allBanks[5][1], 'w6-a11').answer === 7);
+check('w6-a14: 26 shared between 5 → 1 left over', findItem(allBanks[5][1], 'w6-a14').answer === 1);
+check('w7-a12: 8600 + 2000 = 10600', findItem(allBanks[6][1], 'w7-a12').answer === 10600);
+check('w7-a13: 20050 − 1000 = 19050', findItem(allBanks[6][1], 'w7-a13').answer === 19050);
+check('w8-a6: 235+148 = 383', findItem(allBanks[7][1], 'w8-a6').answer === 383);
+check('w8-a16: 175+199 = 374', findItem(allBanks[7][1], 'w8-a16').answer === 374);
+check('w9-a8: difference 156↔342 = 186', findItem(allBanks[8][1], 'w9-a8').answer === 186);
+check('w9-a17: 180−95+40 = 125', findItem(allBanks[8][1], 'w9-a17').answer === 125);
+check('w10-a15: 65−28+15 = 52', findItem(allBanks[9][1], 'w10-a15').answer === 52);
+
+// the demo walkthroughs must be arithmetically true — a wrong demo teaches a wrong method
+console.log('\n== content: demo arithmetic ==');
+check('w9 demo: 4 + 140 + 42 = 186 and 156 + 186 = 342', 4 + 140 + 42 === 186 && 156 + 186 === 342);
+check('w8 demo: 40+30=70, 7+8=15, 70+15=85 = 47+38', 40 + 30 + (7 + 8) === 47 + 38);
+check('w9 weDo 1: 2 + 110 + 4 = 116 and 138 + 116 = 254', 2 + 110 + 4 === 116 && 138 + 116 === 254);
+check('w9 weDo 2: 234 − 100 + 1 = 234 − 99', 234 - 100 + 1 === 234 - 99);
+check('w8 weDo 2: 200 + 46 − 1 = 199 + 46', 200 + 46 - 1 === 199 + 46);
+check('w10 weDo 2: 3 + 100 + 3 = 106 and 147 + 106 = 253', 3 + 100 + 3 === 106 && 147 + 106 === 253);
+check('w6 weDo: 20÷4 = 5 and 20÷5 = 4', 20 / 4 === 5 && 20 / 5 === 4);
 
 // ---------- generators: verifiable arithmetic across difficulties ----------
 console.log('\n== content: generators ==');

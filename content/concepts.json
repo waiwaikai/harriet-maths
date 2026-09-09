@@ -35,6 +35,41 @@
       "stage": "S1",
       "cpaNote": "Concrete equal groups → array pictures → × symbol; commutativity via the sideways array.",
       "prerequisites": ["addsub-strategies"]
+    },
+    {
+      "id": "div-fractions-intro",
+      "title": "Sharing & grouping → division; halves, quarters, eighths",
+      "stage": "S1",
+      "cpaNote": "Deal counters out (sharing) vs scoop into piles (grouping); folded paper strip for unit fractions.",
+      "prerequisites": ["mult-intro"]
+    },
+    {
+      "id": "pv-10000s",
+      "title": "Place value to tens of thousands",
+      "stage": "S2",
+      "cpaNote": "Thousand block → Th·H·T·O column chart; every step left is ten times bigger.",
+      "prerequisites": ["pv-partitioning"]
+    },
+    {
+      "id": "add-23digit",
+      "title": "Mental & written 2–3 digit addition",
+      "stage": "S2",
+      "cpaNote": "Split by place value, or jump on an empty number line; estimate before calculating.",
+      "prerequisites": ["addsub-strategies", "pv-10000s"]
+    },
+    {
+      "id": "sub-23digit",
+      "title": "Mental & written 2–3 digit subtraction",
+      "stage": "S2",
+      "cpaNote": "Count up for close numbers, jump back for chunks, round-and-adjust for near-hundreds; check by adding back.",
+      "prerequisites": ["add-23digit"]
+    },
+    {
+      "id": "t3-revision",
+      "title": "Term 3 revision sweep",
+      "stage": "S1/S2",
+      "cpaNote": "No new content — mixed retrieval across every concept covered in Term 3.",
+      "prerequisites": []
     }
   ]
 }

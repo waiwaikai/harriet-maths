@@ -1,0 +1,81 @@
+{
+  "bankId": "t3-w8",
+  "conceptId": "add-23digit",
+  "parentIntro": "Bigger addition, still by strategy rather than by column rules. Two roads she already half-knows from Week 4: SPLIT (47 + 38 → 40+30=70, 7+8=15, 70+15=85) and JUMP (47 → +30 → 77 → +8 → 85). Written columns are fine if she wants them, but only after she can say roughly what the answer should be.",
+  "watchFor": "The classic wrong answer is 47 + 38 = 715 — adding each column as a separate little sum and gluing the results together. The cure is estimating FIRST: “about 50 add about 40, so around 90.” If her answer isn't near her estimate, she'll catch it herself, which is worth far more than you catching it.",
+  "demo": {
+    "title": "Two roads to 47 + 38",
+    "say": "You did this with take-aways in week four. Today the same two roads, but for adding — and the numbers are bigger.",
+    "steps": [
+      {
+        "show": "47 + 38 ≈ 50 + 40 = about 90",
+        "caption": "estimate first — always",
+        "say": "Before anything, let's guess. Forty seven is nearly fifty, thirty eight is nearly forty. So the answer will be somewhere around ninety."
+      },
+      {
+        "show": "40 + 30 = 70\n7 + 8 = 15\n70 + 15 = 85",
+        "caption": "road 1: split into tens and ones",
+        "say": "Road one. Split both numbers up. Forty and thirty make seventy. Seven and eight make fifteen. Seventy and fifteen make eighty five."
+      },
+      {
+        "show": "47 ⟶30⟶ 77 ⟶3⟶ 80 ⟶5⟶ 85",
+        "caption": "road 2: jump along the number line",
+        "say": "Road two. Start at forty seven, jump thirty to seventy seven, then three to land on eighty, then five more. Eighty five again!"
+      },
+      {
+        "show": "85 — and our guess was about 90 ✓",
+        "caption": "close to the estimate, so it's sensible",
+        "say": "Eighty five. And we guessed about ninety, so that feels right. Both roads, same answer."
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "156 + 128, using the split strategy.",
+      "model": "Whiteboard, three lines: hundreds, tens, ones. Let her split both numbers before adding anything.",
+      "steps": [
+        "Estimate first, together: “about 160 add about 130 — so around 290.”",
+        "Split: 100 + 100 = 200. 50 + 20 = 70. 6 + 8 = 14.",
+        "Put them back together: 200 + 70 + 14. Ask her how to handle the 14 (it's a ten and four → 284).",
+        "Compare with the estimate — 284 against about 290. Ask: “does that feel right?”"
+      ],
+      "answer": "284"
+    },
+    {
+      "problem": "A sneaky one: 199 + 46.",
+      "model": "Number line. Point out that 199 is desperate to be 200 — it only needs 1.",
+      "steps": [
+        "Ask: “what friendly number is 199 nearly?” (200.)",
+        "Do the easy sum instead: 200 + 46 = 246.",
+        "Now the important question: “we added one extra to make it easy — so what do we do now?” (Give it back: 246 − 1 = 245.)",
+        "Name the trick: “round it up, then pay it back.” Try 299 + 34 together if she's enjoying it (333)."
+      ],
+      "answer": "245"
+    }
+  ],
+  "items": [
+    { "id": "w8-a1", "kind": "plain", "text": "What is 40 + 30?", "say": "What is forty plus thirty?", "answer": 70, "difficulty": 1 },
+    { "id": "w8-a2", "kind": "plain", "text": "What is 25 + 10?", "say": "What is twenty five plus ten?", "answer": 35, "difficulty": 1 },
+    { "id": "w8-a3", "kind": "plain", "text": "What is 47 + 38?", "say": "What is forty seven plus thirty eight?", "answer": 85, "difficulty": 2 },
+    { "id": "w8-a4", "kind": "plain", "text": "What is 126 + 30?", "say": "What is one hundred and twenty six, plus thirty?", "answer": 156, "difficulty": 2 },
+    { "id": "w8-a5", "kind": "plain", "text": "What is 58 + 27?", "say": "What is fifty eight plus twenty seven?", "answer": 85, "difficulty": 2 },
+    { "id": "w8-a6", "kind": "plain", "text": "What is 235 + 148?", "say": "What is two hundred and thirty five, plus one hundred and forty eight?", "answer": 383, "difficulty": 3 },
+    { "id": "w8-a7", "kind": "plain", "text": "What is 199 + 46?", "say": "What is one hundred and ninety nine, plus forty six?", "answer": 245, "difficulty": 3 },
+    { "id": "w8-a8", "kind": "story", "text": "Harriet reads 128 pages, then 95 more. How many pages has she read?", "say": "Harriet reads one hundred and twenty eight pages, then ninety five more. How many pages has she read altogether?", "answer": 223, "difficulty": 3 },
+    { "id": "w8-a9", "kind": "plain", "text": "? + 45 = 92. What is the missing number?", "say": "Something plus forty five equals ninety two. What is the missing number?", "answer": 47, "difficulty": 3 },
+    { "id": "w8-a10", "kind": "story", "text": "A shop sells 156 apples on Saturday and 178 on Sunday. How many altogether?", "say": "A shop sells one hundred and fifty six apples on Saturday, and one hundred and seventy eight on Sunday. How many apples altogether?", "answer": 334, "difficulty": 3 },
+    { "id": "w8-a11", "kind": "plain", "text": "Add 250, 130 and 60.", "say": "Add together: two hundred and fifty, one hundred and thirty, and sixty.", "answer": 440, "difficulty": 3 },
+    { "id": "w8-a12", "kind": "plain", "text": "What is 397 + 8?", "say": "What is three hundred and ninety seven, plus eight?", "answer": 405, "difficulty": 3 },
+    { "id": "w8-a13", "kind": "plain", "text": "Two numbers add up to 100. One of them is 62. What is the other?", "say": "Two numbers add up to one hundred. One of them is sixty two. What is the other one?", "answer": 38, "difficulty": 3 },
+    { "id": "w8-a14", "kind": "story", "text": "Harriet reads 85 pages on Monday and 76 pages on Tuesday. How many pages in the two days?", "say": "Harriet reads eighty five pages on Monday, and seventy six pages on Tuesday. How many pages in the two days?", "answer": 161, "difficulty": 3 },
+    { "id": "w8-a15", "kind": "plain", "text": "What is 68 + 68?", "say": "What is sixty eight plus sixty eight?", "answer": 136, "difficulty": 3 },
+    { "id": "w8-a16", "kind": "plain", "text": "What is 175 + 199?", "say": "What is one hundred and seventy five, plus one hundred and ninety nine?", "answer": 374, "difficulty": 3 },
+    { "id": "w8-a17", "kind": "story", "text": "Umma spends $138 at the shops and $27 on petrol. How much did she spend altogether?", "say": "Umma spends one hundred and thirty eight dollars at the shops, and twenty seven dollars on petrol. How much did she spend altogether?", "answer": 165, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w8-e1", "kind": "plain", "text": "What is 30 + 40?", "say": "What is thirty plus forty?", "answer": 70, "difficulty": 1 },
+    { "id": "w8-e2", "kind": "plain", "text": "What is 9 + 8?", "say": "What is nine plus eight?", "answer": 17, "difficulty": 1 },
+    { "id": "w8-e3", "kind": "plain", "text": "What is 50 + 25?", "say": "What is fifty plus twenty five?", "answer": 75, "difficulty": 1 },
+    { "id": "w8-e4", "kind": "plain", "text": "What is 100 + 50?", "say": "What is one hundred plus fifty?", "answer": 150, "difficulty": 1 }
+  ]
+}

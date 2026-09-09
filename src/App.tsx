@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ProgressState } from './content/types';
-import { getBank, spine } from './content/loadBank';
+import { getBank, revisionBank, spine } from './content/loadBank';
+import type { DayPlan } from './engine/scheduler';
 import { planToday } from './engine/scheduler';
 import { useTodayISO } from './useToday';
 import { getState } from './store/progress';
@@ -36,14 +37,17 @@ export default function App() {
   }
 
   if (activeWeekId) {
-    const bank = getBank(activeWeekId);
     const week = spine.weeks.find(w => w.id === activeWeekId);
-    if (bank && week) {
+    // no bank authored for this week yet → run a revision sweep rather than nothing
+    const authored = getBank(activeWeekId);
+    const bank = authored ?? revisionBank;
+    const sessionPlan: DayPlan = authored || !week ? plan : { kind: 'flex', week };
+    if (week) {
       return (
         <Session
           bank={bank}
           week={week}
-          plan={plan}
+          plan={sessionPlan}
           dateISO={today}
           state={state}
           setState={setState}

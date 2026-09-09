@@ -1,0 +1,81 @@
+{
+  "bankId": "t3-w10",
+  "conceptId": "t3-revision",
+  "parentIntro": "The last week of Term 3 — no new concept. This week sweeps back across everything since July: place value, partitioning, fact families, add/sub strategies, equal groups, division and fractions, and the big-number bridge. The app leans the questions towards whatever she's found tricky, so it will look different each day.",
+  "watchFor": "This is the week to notice how much has changed since July — say it out loud to her. If something from early in the term has gone rusty, that's completely normal and exactly what this week is for; it is not a sign anything has gone wrong. Anything still shaky here is worth a mention at the next check-in.",
+  "demo": {
+    "title": "Look how far you've come",
+    "say": "No new maths today. Instead, let's look at what you could do in July, and what you can do now.",
+    "steps": [
+      {
+        "show": "July: 3 4 2\n“three hundred and forty two”",
+        "caption": "where we started — place value to 1000",
+        "say": "Back in July we were building three digit numbers out of blocks. Hundreds, tens and ones."
+      },
+      {
+        "show": "Now: 2 6 1 3\nthe 6 is worth 600",
+        "caption": "…and now you read thousands",
+        "say": "Now you read numbers into the thousands, and you know what every single digit is worth."
+      },
+      {
+        "show": "342 − 156 = 186\n156 ⟶ 160 ⟶ 300 ⟶ 342",
+        "caption": "the take-aways that used to be scary",
+        "say": "And these big take-aways — the ones that felt tricky at the start of term — you have three different roads through them now."
+      },
+      {
+        "show": "🎉",
+        "caption": "one term, all of that",
+        "say": "That is a whole term of getting stronger. This week we just play with all of it."
+      }
+    ]
+  },
+  "weDo": [
+    {
+      "problem": "Pick any number between 100 and 1000 — Harriet chooses. Then pull it apart every way you can.",
+      "model": "Let her choose the number (ownership matters this week). Whiteboard, no rules — just collect as many true statements about it as you can.",
+      "steps": [
+        "She picks a number, say 465. Write it big.",
+        "Collect facts together: 400 + 60 + 5 · 46 tens and 5 ones · 100 more is 565 · 10 less is 455 · half of it is a bit more than 200.",
+        "Ask for the trickiest one she can think of herself — let her set you a challenge back.",
+        "No answers to check here. The aim is fluency and confidence, not a correct response."
+      ],
+      "answer": "Open ended — as many true statements as she can make"
+    },
+    {
+      "problem": "The two roads, one last time: 253 − 147.",
+      "model": "Empty number line. Ask her to choose the road BEFORE doing any arithmetic.",
+      "steps": [
+        "Ask: “count up, or jump back? Which suits these two numbers?” (They're closish, so counting up is neat.)",
+        "Count up: 147 → 150 is 3, 150 → 250 is 100, 250 → 253 is 3. Total 106.",
+        "Check by adding back: 147 + 106 = 253.",
+        "Ask her to explain her choice of road to you, in her own words. That explanation is the real goal of the term."
+      ],
+      "answer": "106"
+    }
+  ],
+  "items": [
+    { "id": "w10-a1", "kind": "plain", "text": "What is 9 + 8?", "say": "What is nine plus eight?", "answer": 17, "difficulty": 1 },
+    { "id": "w10-a2", "kind": "plain", "text": "What number is 3 hundreds, 0 tens and 7 ones?", "say": "What number is three hundreds, zero tens, and seven ones?", "answer": 307, "difficulty": 2 },
+    { "id": "w10-a3", "kind": "plain", "text": "What is 6 groups of 4?", "say": "What is six groups of four?", "answer": 24, "difficulty": 2 },
+    { "id": "w10-a4", "kind": "plain", "text": "What is half of 18?", "say": "What is half of eighteen?", "answer": 9, "difficulty": 2 },
+    { "id": "w10-a5", "kind": "plain", "text": "How many tens make 350?", "say": "How many tens make three hundred and fifty?", "answer": 35, "difficulty": 2 },
+    { "id": "w10-a6", "kind": "plain", "text": "What is 24 ÷ 4?", "say": "What is twenty four divided by four?", "answer": 6, "difficulty": 2 },
+    { "id": "w10-a7", "kind": "plain", "text": "What is 42 − 27?", "say": "What is forty two take away twenty seven?", "answer": 15, "difficulty": 3 },
+    { "id": "w10-a8", "kind": "plain", "text": "In 2,613 — what is the 6 worth?", "say": "In two thousand, six hundred and thirteen. What is the six worth?", "answer": 600, "difficulty": 3 },
+    { "id": "w10-a9", "kind": "plain", "text": "What is 148 + 236?", "say": "What is one hundred and forty eight, plus two hundred and thirty six?", "answer": 384, "difficulty": 3 },
+    { "id": "w10-a10", "kind": "plain", "text": "? + 27 = 62. What is the missing number?", "say": "Something plus twenty seven equals sixty two. What is the missing number?", "answer": 35, "difficulty": 3 },
+    { "id": "w10-a11", "kind": "plain", "text": "What is 400 − 175?", "say": "What is four hundred take away one hundred and seventy five?", "answer": 225, "difficulty": 3 },
+    { "id": "w10-a12", "kind": "plain", "text": "What is 1,000 more than 4,250?", "say": "What is one thousand more than four thousand, two hundred and fifty?", "answer": 5250, "difficulty": 3 },
+    { "id": "w10-a13", "kind": "plain", "text": "An array has 5 rows of 6 dots. How many dots altogether?", "say": "An array has five rows of six dots. How many dots altogether?", "answer": 30, "difficulty": 3 },
+    { "id": "w10-a14", "kind": "story", "text": "A ribbon 36 cm long is cut into 4 equal pieces. How long is each piece?", "say": "A ribbon thirty six centimetres long is cut into four equal pieces. How long is each piece?", "answer": 9, "difficulty": 3 },
+    { "id": "w10-a15", "kind": "story", "text": "Harriet has 65 stickers, gives 28 to Ruby, then earns 15 more. How many does she have now?", "say": "Harriet has sixty five stickers. She gives twenty eight to Ruby, then earns fifteen more. How many stickers does she have now?", "answer": 52, "difficulty": 3 },
+    { "id": "w10-a16", "kind": "plain", "text": "What is the difference between 45 and 82?", "say": "What is the difference between forty five, and eighty two?", "answer": 37, "difficulty": 3 },
+    { "id": "w10-a17", "kind": "story", "text": "28 cupcakes are shared equally onto 4 plates. How many on each plate?", "say": "Twenty eight cupcakes are shared equally onto four plates. How many cupcakes on each plate?", "answer": 7, "difficulty": 3 }
+  ],
+  "warmupWins": [
+    { "id": "w10-e1", "kind": "plain", "text": "What is 10 + 5?", "say": "What is ten plus five?", "answer": 15, "difficulty": 1 },
+    { "id": "w10-e2", "kind": "plain", "text": "What is half of 8?", "say": "What is half of eight?", "answer": 4, "difficulty": 1 },
+    { "id": "w10-e3", "kind": "plain", "text": "What is 2 groups of 5?", "say": "What is two groups of five?", "answer": 10, "difficulty": 1 },
+    { "id": "w10-e4", "kind": "plain", "text": "What is 20 − 10?", "say": "What is twenty take away ten?", "answer": 10, "difficulty": 1 }
+  ]
+}
