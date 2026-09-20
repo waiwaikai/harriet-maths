@@ -2,13 +2,21 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const BUILD_ID = new Date().toISOString().slice(0, 16).replace('T', ' ');
+
 export default defineConfig(({ mode }) => ({
   // GitHub Pages serves from /harriet-maths/; dev stays at root
   base: mode === 'production' ? '/harriet-maths/' : '/',
+  define: { __BUILD_ID__: JSON.stringify(BUILD_ID) },
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      // registered by hand in main.tsx so the app can re-check on resume:
+      // an installed iOS PWA is suspended, never reloaded, so the default
+      // load-time registration may never run again and the device sticks
+      // on an old build forever.
+      injectRegister: null,
       includeAssets: ['icons/apple-touch-icon.png'],
       manifest: {
         name: 'Harriet is a Maths Whiz!',

@@ -2,11 +2,13 @@ import type { ProgressState } from '../content/types';
 import type { Spine } from '../content/types';
 import { LADDER_NAMES, verdict, VERDICT_LABEL } from './placement';
 import { calendarWeekIndex, resolveActiveIndex } from './scheduler';
+import { BUILD_ID } from '../buildId';
 
 /** Plain-text progress summary for pasting into a check-in chat. */
 export function buildProgressSummary(state: ProgressState, todayISO: string, spine: Spine): string {
   const lines: string[] = [];
   lines.push(`HARRIET MATHS — progress summary (${todayISO})`);
+  lines.push(`App build: ${BUILD_ID}`);
   lines.push(`Streak: ${state.streak} days · Sessions: ${state.sessions.length}`);
 
   const cal = calendarWeekIndex(todayISO, spine);

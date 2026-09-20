@@ -5,6 +5,7 @@ import { calendarWeekIndex, resolveActiveIndex, schoolDayLabel, toISO } from '..
 import { getBank, spine } from '../content/loadBank';
 import { buildPlan, gapsSummary, isComplete, LADDER_NAMES, VERDICT_LABEL, verdict } from '../engine/placement';
 import { buildBackupUrl, buildProgressSummary, shareSummary } from '../engine/summary';
+import { BUILD_ID } from '../buildId';
 import { todaysSession, updateSettings } from '../store/progress';
 
 interface Props {
@@ -168,6 +169,8 @@ export function Home({ state, setState, plan, today, onStart, onStartDiagnostic 
           </button>
           <div className="parentnote">Open the backup link on the other device to carry everything across.</div>
           <div className="sessionlog">
+            <b>App build:</b> {BUILD_ID}
+            <br />
             <b>Position:</b> {positionLine(state, today)}
             <br />
             <b>Sessions:</b>
